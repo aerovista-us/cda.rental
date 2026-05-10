@@ -4,6 +4,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay</title>
   <meta name="description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
+  <!-- Find/replace REPLACE_SITE_PUBLIC_URL with your live HTTPS origin (no trailing slash), e.g. https://stay.example.com — same token is used in robots.txt, sitemap.xml, privacy.html, and terms.html -->
+  <meta name="site-public-url" content="REPLACE_SITE_PUBLIC_URL" />
+  <link rel="canonical" href="REPLACE_SITE_PUBLIC_URL/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay" />
+  <meta property="og:description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
+  <meta property="og:url" content="REPLACE_SITE_PUBLIC_URL/" />
+  <meta property="og:image" content="REPLACE_SITE_PUBLIC_URL/images/cdasunset.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay" />
+  <meta name="twitter:description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
+  <meta name="twitter:image" content="REPLACE_SITE_PUBLIC_URL/images/cdasunset.png" />
+  <meta name="theme-color" content="#05070b" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LodgingBusiness","name":"Heart of Awl Basecamp","description":"Private Coeur d'Alene Ironman weekend stay for athletes, families, and support crews.","url":"REPLACE_SITE_PUBLIC_URL/","address":{"@type":"PostalAddress","addressLocality":"Coeur d'Alene","addressRegion":"ID","addressCountry":"US"}}
+  </script>
   <style>
     :root {
       --bg: #05070b;
@@ -39,6 +62,40 @@ body {
 
 a { color: inherit; text-decoration: none; }
 .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 12px 18px;
+  clip: auto;
+  overflow: visible;
+  white-space: normal;
+  z-index: 10000;
+  border-radius: 14px;
+  font-weight: 900;
+  color: #031018;
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
+  box-shadow: 0 12px 40px rgba(47, 231, 255, 0.35);
+}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
 
 .top-notice {
   padding: 10px 16px;
@@ -529,6 +586,7 @@ footer b { color: var(--text); }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="top-notice">Independent private lodging near Coeur d'Alene Ironman weekend activity. Not affiliated with, sponsored by, or endorsed by IRONMAN® or any race organizer.</div>  <header>
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Heart of Awl Basecamp home">
@@ -548,8 +606,8 @@ footer b { color: var(--text); }
       </nav>
       <a class="btn primary" href="#request">Request Booking</a>
     </div>
-  </header>  <main id="top">
-    <section class="hero">
+  </header>  <main id="main-content" tabindex="-1">
+    <section class="hero" id="top">
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Ironman Weekend · June 12–23 · Coeur d'Alene, Idaho</div>
@@ -690,7 +748,7 @@ footer b { color: var(--text); }
             <div class="quote-line"><span>Refundable security deposit</span><strong id="quoteDeposit">$350</strong></div>
             <div class="quote-line big"><span>Estimated total</span><strong id="quoteTotal">$3,000</strong></div>
             <div class="quote-line big"><span>Due to reserve</span><strong id="quoteReserve">$950</strong></div>
-            <p class="date-note">Estimate only. Taxes TBD. Reservation is not confirmed until approval, deposit, and agreement are complete.</p>
+            <p class="date-note">Estimate only. Lodging and sales taxes depend on jurisdiction and are itemized on your confirmation before payment. Reservation is not confirmed until approval, deposit, and agreement are complete.</p>
           </div>
           <a class="btn hot" href="#request" style="margin-top:14px;">Request Selected Dates</a>
         </div>
@@ -722,7 +780,7 @@ footer b { color: var(--text); }
         <div class="fee-row"><span>Cleaning / turnover fee</span><b id="breakdownCleaning">$225</b></div>
         <div class="fee-row"><span>Event-weekend logistics fee</span><b id="breakdownLogistics">$175</b></div>
         <div class="fee-row"><span>Refundable security deposit</span><b id="breakdownDeposit">$350</b></div>
-        <div class="fee-row"><span>Estimated lodging taxes</span><b>TBD</b></div>
+        <div class="fee-row"><span>Estimated lodging taxes</span><b>At confirmation</b></div>
         <div class="fee-row total"><span>Due to reserve</span><b id="breakdownReserve">$950</b></div>
         <p style="color:var(--muted);line-height:1.62;margin-top:14px;">Estimate only. Taxes, refund terms, security deposit handling, and final payment instructions will be confirmed before your reservation is finalized.</p>
       </div>
@@ -767,12 +825,12 @@ footer b { color: var(--text); }
       <div class="eyebrow">Request Your Stay</div>
       <h2 style="font-size:clamp(31px,4vw,48px);line-height:1;margin:18px 0 12px;letter-spacing:-.045em;">Send your booking request.</h2>
       <p>Send your preferred dates and stay details. We’ll review your request and follow up with approval, payment, and agreement instructions if the home is a good fit for your group.</p>
-      <div class="status-board">
-        <div class="status-item"><span>Booking request</span><span class="pill pending">Submitted</span></div>
-        <div class="status-item"><span>Stay review</span><span class="pill warn">Required</span></div>
-        <div class="status-item"><span>Payment link</span><span class="pill pending">After approval</span></div>
-        <div class="status-item"><span>Rental agreement</span><span class="pill pending">Signature</span></div>
-        <div class="status-item"><span>Calendar status</span><span class="pill good">Held after deposit</span></div>
+      <div class="status-board" aria-label="Typical steps after you submit a request">
+        <div class="status-item"><span>1. Your request</span><span class="pill pending">You send details</span></div>
+        <div class="status-item"><span>2. Stay review</span><span class="pill warn">We assess fit</span></div>
+        <div class="status-item"><span>3. Payment link</span><span class="pill pending">If approved</span></div>
+        <div class="status-item"><span>4. Agreement</span><span class="pill pending">Sign &amp; deposit</span></div>
+        <div class="status-item"><span>5. Calendar hold</span><span class="pill good">After deposit</span></div>
       </div>
     </div>
 
@@ -782,7 +840,7 @@ footer b { color: var(--text); }
           <div><label for="name">Name</label><input id="name" name="name" placeholder="Full name" required autocomplete="name"></div>
           <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="Best contact number" autocomplete="tel"></div>
         </div>
-        <div><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Email for replies (recommended)"></div>
+        <div><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="your@email.com" required></div>
         <div class="field-2">
           <div><label for="checkin">Check-in</label><input id="checkin" name="checkin" type="date" min="2026-06-12" max="2026-06-22" value="2026-06-19"></div>
           <div><label for="checkout">Check-out</label><input id="checkout" name="checkout" type="date" min="2026-06-13" max="2026-06-23" value="2026-06-22"></div>
@@ -793,6 +851,8 @@ footer b { color: var(--text); }
         </div>
         <div><label for="purpose">Stay Purpose</label><select id="purpose" name="purpose"><option>Ironman athlete / support crew</option><option>Family support stay</option><option>Race weekend visitor</option><option>Other — explain below</option></select></div>
         <div><label for="notes">Notes / Requests</label><textarea id="notes" name="notes" placeholder="Tell us who is staying, whether bikes or gear are coming, your arrival plan, and anything helpful for reviewing your request."></textarea></div>
+        <p style="color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 14px;">By submitting, you agree we may contact you about your inquiry via Formspree and email. Read our <a href="privacy.html" style="color:var(--cyan);">Privacy</a> policy.</p>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" value="" />
         <button class="btn primary" type="submit">Submit Booking Request</button>
         <p id="demoResult" style="color:var(--green);font-weight:950;margin:4px 0 0"></p>
       </form>
@@ -811,8 +871,16 @@ footer b { color: var(--text); }
   </main>  <footer>
     <div class="wrap">
       <p><b>Important note:</b> References to Ironman weekend activity are descriptive and geographic only. This private stay is not official race lodging and is not affiliated with, sponsored by, or endorsed by IRONMAN® or any race organizer. Final availability, pricing, taxes, agreement terms, deposit handling, and occupancy approval must be confirmed before reservation.</p>
+      <p style="margin-top:18px;">Hosts are responsible for complying with applicable local short-term rental rules, taxes, and occupancy limits. Guests must follow house rules and any rental agreement provided at booking.</p>
+      <p style="margin-top:18px;">Questions? Use the <a href="#request" style="color:var(--cyan);">booking request form</a> — we reply by email after review.</p>
+      <p style="margin-top:16px;font-size:13px;"><a href="privacy.html" style="color:var(--muted);">Privacy</a> · <a href="terms.html" style="color:var(--muted);">Terms</a></p>
     </div>
-  </footer>  <script>
+  </footer>
+  <!-- Optional analytics: uncomment and set data-domain after deploy (see docs/DEPLOY.md)
+  <script defer data-domain="YOUR_DOMAIN" src="https://plausible.io/js/script.js"></script>
+  -->
+  <script>
+    /* GO-LIVE: Keep nightlyRates and calendar day classes (open/hold/booked) aligned with real availability and published pricing for your season. */
     const nightlyRates = {
       '2026-06-12': 550,
       '2026-06-13': 575,
@@ -1020,6 +1088,11 @@ footer b { color: var(--text); }
     });
 
     setupBookingForm();
+
+    document.querySelectorAll('.location-gallery img').forEach(img => {
+      img.addEventListener('error', () => { img.style.display = 'none'; });
+    });
+
     calculateQuote();
   </script></body>
 </html>

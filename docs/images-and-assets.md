@@ -6,7 +6,13 @@ Static HTML in `index.html` references files under **`images/`** in the same fol
 
 | Asset | Role |
 |-------|------|
-| `images/cdasunset.png` | Background photo for `.hero-card` (panel with “Minutes from the action. Far enough to breathe.”). |
+| `images/cdasunset.png` | Background photo for `.hero-card` (panel with “Minutes from the action. Far enough to breathe.”). Also referenced as **`og:image`** / **`twitter:image`** after you set **`REPLACE_SITE_PUBLIC_URL`** in `index.html` (see `docs/DEPLOY.md`). |
+
+## Site icon
+
+| Asset | Role |
+|-------|------|
+| `favicon.svg` | Browser tab / bookmark icon (and linked as a basic touch icon). |
 
 ## Location section (`#location`)
 

@@ -1,0 +1,5 @@
+# Allow indexing once REPLACE_SITE_PUBLIC_URL is replaced in this file and in sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: REPLACE_SITE_PUBLIC_URL/sitemap.xml

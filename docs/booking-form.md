@@ -56,6 +56,11 @@ Submitting opens the visitor’s default mail client with subject and body fille
 
 If **both** `formAction` and `mailto` are empty strings, submit shows an inline message only — **nothing is sent**. Use this until you add a real endpoint or mailto address.
 
-## Optional reply email field
+## Email & spam prevention
 
-The form includes an **Email** field (`name="email"`) for guest replies. Formspree uses it for reply routing when notifications are enabled on the form.
+- **Email** (`name="email"`) is **required** so you can reply from Formspree notifications.
+- A **honeypot** field (`name="_gotcha"`) is hidden off-screen; bots that fill it can be filtered by your form provider.
+
+## Privacy consent
+
+The form includes a short consent line linking to **`privacy.html`**. Keep that page accurate if you change processors or data practices.
