@@ -9,6 +9,8 @@
   <link rel="canonical" href="REPLACE_SITE_PUBLIC_URL/request.html" />
   <meta name="theme-color" content="#05070b" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Traffic: set to your site hostname for Plausible pageviews & UTM capture (see docs/analytics.md). Leave empty to disable. -->
+  <meta name="analytics-domain" content="" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -220,7 +222,22 @@
         <h2 style="margin:12px 0 8px;font-size:clamp(22px,3vw,30px);letter-spacing:-0.03em;">Send your details</h2>
         <p style="margin:0 0 18px;color:var(--muted);font-size:15px;line-height:1.55;">We use your selections exactly as shown in the recap. You can add context in notes.</p>
 
-        <form id="booking-form" name="booking" autocomplete="on">
+        <form id="booking-form" name="booking" autocomplete="on" action="https://formspree.io/f/xeenpaby" method="POST">
+          <input type="hidden" name="form_source" id="field-form-source" value="heartofawl_request" />
+          <input type="hidden" name="selected_nights_iso" id="field-selected-nights-iso" value="" />
+          <input type="hidden" name="nights_count" id="field-nights-count" value="" />
+          <input type="hidden" name="selected_nights_readable" id="field-nights-readable" value="" />
+          <input type="hidden" name="per_night_rates" id="field-per-night-rates" value="" />
+          <input type="hidden" name="first_night_iso" id="field-first-night-iso" value="" />
+          <input type="hidden" name="last_night_iso" id="field-last-night-iso" value="" />
+          <input type="hidden" name="checkout_morning_iso" id="field-checkout-morning-iso" value="" />
+          <input type="hidden" name="peak_block_complete" id="field-peak-block" value="" />
+          <input type="hidden" name="nightly_subtotal_usd" id="field-nightly-sub-usd" value="" />
+          <input type="hidden" name="cleaning_fee_usd" id="field-cleaning-usd" value="" />
+          <input type="hidden" name="logistics_fee_usd" id="field-logistics-usd" value="" />
+          <input type="hidden" name="predeposit_total_usd" id="field-predeposit-usd" value="" />
+          <input type="hidden" name="reserve_estimate_usd" id="field-reserve-usd" value="" />
+          <input type="hidden" name="security_deposit_usd" id="field-security-deposit-usd" value="" />
           <div class="field-2">
             <div><label for="name">Name</label><input id="name" name="name" placeholder="Full name" required autocomplete="name" /></div>
             <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="Best contact number" autocomplete="tel" /></div>
@@ -233,11 +250,12 @@
           <input type="hidden" name="selected_nights" id="booking-selected-nights" value="" />
           <input type="hidden" name="estimate_predeposit" id="field-estimate-predeposit" value="" />
           <input type="hidden" name="estimate_reserve" id="field-estimate-reserve" value="" />
+          <textarea name="submission_digest" id="field-submission-digest" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" tabindex="-1" aria-hidden="true"></textarea>
           <div class="field-2">
-            <div><label for="guests">Guest Count</label><select id="guests" name="guests"><option>1–4</option><option>5–8</option><option>9–10 with approval</option><option>11–12 with approval</option></select></div>
-            <div><label for="vehicles">Vehicles</label><select id="vehicles" name="vehicles"><option>1</option><option>2</option><option>3</option><option>4+ needs approval</option></select></div>
+            <div><label for="guests">Guest Count</label><select id="guests" name="guests"><option value="1–4">1–4</option><option value="5–8">5–8</option><option value="9–10 with approval">9–10 with approval</option><option value="11–12 with approval">11–12 with approval</option></select></div>
+            <div><label for="vehicles">Vehicles</label><select id="vehicles" name="vehicles"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+ needs approval">4+ needs approval</option></select></div>
           </div>
-          <div><label for="purpose">Stay Purpose</label><select id="purpose" name="purpose"><option>Ironman athlete / support crew</option><option>Family support stay</option><option>Race weekend visitor</option><option>Other — explain below</option></select></div>
+          <div><label for="purpose">Stay Purpose</label><select id="purpose" name="purpose"><option value="Ironman athlete / support crew">Ironman athlete / support crew</option><option value="Family support stay">Family support stay</option><option value="Race weekend visitor">Race weekend visitor</option><option value="Other — explain below">Other — explain below</option></select></div>
           <div><label for="notes">Notes / Requests</label><textarea id="notes" name="notes" placeholder="Anything else we should know — bikes, crew roles, arrival timing, etc."></textarea></div>
           <p style="color:var(--muted);font-size:13px;line-height:1.55;margin:0;">By submitting, you agree we may contact you via Formspree and email. <a href="privacy.html" style="color:var(--cyan);">Privacy</a> · <a href="terms.html" style="color:var(--cyan);">Terms</a></p>
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" value="" />
@@ -254,6 +272,22 @@
       <p style="margin-top:12px;"><a href="index.html" style="color:var(--cyan);">Home</a> · <a href="privacy.html" style="color:var(--muted);">Privacy</a> · <a href="terms.html" style="color:var(--muted);">Terms</a></p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var m = document.querySelector('meta[name="analytics-domain"]');
+      var d = m && m.getAttribute('content') && m.getAttribute('content').trim();
+      if (!d) return;
+      var s = document.createElement('script');
+      s.defer = true;
+      s.setAttribute('data-domain', d);
+      s.src = 'https://plausible.io/js/script.js';
+      document.head.appendChild(s);
+      s.addEventListener('load', function () {
+        if (window.plausible) plausible('Request Form View');
+      });
+    })();
+  </script>
 
   <script>
     const nightlyRates = {
@@ -316,6 +350,78 @@
 
     let nightsSorted = [];
 
+    function buildSubmissionDigest() {
+      if (!nightsSorted.length || !validatePeakBlock(nightsSorted)) return '';
+      const t = computeTotals(nightsSorted);
+      const lines = [
+        'Heart of Awl Basecamp — submission snapshot',
+        'Form: request.html → Formspree',
+        '---',
+        'SELECTED NIGHTS (ISO 8601 date): ' + nightsSorted.join(', '),
+        'NIGHT COUNT: ' + nightsSorted.length,
+        'Each night:',
+        ...nightsSorted.map(d => `  ${d}  ${formatNightLabel(d)}  nightly_rate_usd=${nightlyRates[d] || 0}`),
+        '---',
+        `Nightly subtotal (sum) USD: ${Math.round(t.nightlySubtotal)}`,
+        `Cleaning fee USD: ${Math.round(t.cleaningApplied)}`,
+        `Event logistics fee USD: ${Math.round(t.logisticsFee)}`,
+        `Estimated pre-deposit stay total USD: ${Math.round(t.preDepositTotal)}`,
+        `Typical reserve deposit estimate USD: ${Math.round(t.reserve)}`,
+        `Refundable security deposit (line item) USD: ${securityDeposit}`,
+        `Peak block Jun 18–21 fully included: ${PEAK_BLOCK.every(d => nightsSorted.includes(d)) ? 'yes' : 'no'}`,
+        '---',
+        'First night (date): ' + nightsSorted[0],
+        'Last night (date): ' + nightsSorted[nightsSorted.length - 1],
+        'Morning after last night (checkout date): ' + addDays(nightsSorted[nightsSorted.length - 1], 1),
+        'Page URL: ' + (typeof location !== 'undefined' ? location.href : '')
+      ];
+      return lines.join('\n');
+    }
+
+    function syncBookingHiddenFields() {
+      const blankIds = [
+        'booking-selected-nights', 'field-selected-nights-iso', 'field-nights-count', 'field-nights-readable',
+        'field-per-night-rates', 'field-first-night-iso', 'field-last-night-iso', 'field-checkout-morning-iso',
+        'field-peak-block', 'field-nightly-sub-usd', 'field-cleaning-usd', 'field-logistics-usd', 'field-predeposit-usd',
+        'field-reserve-usd', 'field-security-deposit-usd', 'field-estimate-predeposit', 'field-estimate-reserve',
+        'field-submission-digest'
+      ];
+      const setv = (id, v) => {
+        const el = document.getElementById(id);
+        if (el) el.value = v;
+      };
+
+      if (!nightsSorted.length || !validatePeakBlock(nightsSorted)) {
+        blankIds.forEach(id => setv(id, ''));
+        setv('checkin', '');
+        setv('checkout', '');
+        return;
+      }
+
+      const t = computeTotals(nightsSorted);
+      const isoJoined = nightsSorted.join(', ');
+      setv('booking-selected-nights', isoJoined);
+      setv('field-selected-nights-iso', isoJoined);
+      setv('field-nights-count', String(nightsSorted.length));
+      setv('field-nights-readable', nightsSorted.map(d => `${d} (${formatNightLabel(d)})`).join(' | '));
+      setv('field-per-night-rates', nightsSorted.map(d => `${d}:${nightlyRates[d] || 0}`).join(','));
+      setv('field-first-night-iso', nightsSorted[0]);
+      setv('field-last-night-iso', nightsSorted[nightsSorted.length - 1]);
+      setv('field-checkout-morning-iso', addDays(nightsSorted[nightsSorted.length - 1], 1));
+      setv('field-peak-block', PEAK_BLOCK.every(d => nightsSorted.includes(d)) ? 'yes' : 'no');
+      setv('field-nightly-sub-usd', String(Math.round(t.nightlySubtotal)));
+      setv('field-cleaning-usd', String(Math.round(t.cleaningApplied)));
+      setv('field-logistics-usd', String(Math.round(t.logisticsFee)));
+      setv('field-predeposit-usd', String(Math.round(t.preDepositTotal)));
+      setv('field-reserve-usd', String(Math.round(t.reserve)));
+      setv('field-security-deposit-usd', String(securityDeposit));
+      setv('field-estimate-predeposit', money(t.preDepositTotal));
+      setv('field-estimate-reserve', money(t.reserve));
+      setv('checkin', nightsSorted[0]);
+      setv('checkout', addDays(nightsSorted[nightsSorted.length - 1], 1));
+      setv('field-submission-digest', buildSubmissionDigest());
+    }
+
     function renderRecap() {
       const lines = document.getElementById('recap-lines');
       const empty = document.getElementById('banner-empty');
@@ -336,12 +442,8 @@
         document.getElementById('recap-logistics').textContent = '—';
         document.getElementById('recap-predeposit').textContent = '—';
         document.getElementById('recap-reserve').textContent = '—';
-        document.getElementById('checkin').value = '';
-        document.getElementById('checkout').value = '';
-        document.getElementById('booking-selected-nights').value = '';
-        document.getElementById('field-estimate-predeposit').value = '';
-        document.getElementById('field-estimate-reserve').value = '';
         submitBtn.disabled = true;
+        syncBookingHiddenFields();
         return;
       }
 
@@ -355,6 +457,7 @@
         document.getElementById('recap-logistics').textContent = '—';
         document.getElementById('recap-predeposit').textContent = '—';
         document.getElementById('recap-reserve').textContent = '—';
+        syncBookingHiddenFields();
         return;
       }
 
@@ -373,11 +476,7 @@
       document.getElementById('recap-predeposit').textContent = money(t.preDepositTotal);
       document.getElementById('recap-reserve').textContent = money(t.reserve);
 
-      document.getElementById('checkin').value = nightsSorted[0];
-      document.getElementById('checkout').value = addDays(nightsSorted[nightsSorted.length - 1], 1);
-      document.getElementById('booking-selected-nights').value = nightsSorted.join(', ');
-      document.getElementById('field-estimate-predeposit').value = money(t.preDepositTotal);
-      document.getElementById('field-estimate-reserve').value = money(t.reserve);
+      syncBookingHiddenFields();
     }
 
     function setupBookingForm() {
@@ -385,14 +484,15 @@
       if (!form) return;
       const result = document.getElementById('demoResult');
       const fa = (BOOKING.formAction || '').trim();
-      const mt = (BOOKING.mailto || '').trim();
 
       form.addEventListener('submit', ev => {
+        syncBookingHiddenFields();
         if (!validatePeakBlock(nightsSorted) || !nightsSorted.length) {
           ev.preventDefault();
           result.textContent = 'Please fix your nights on the calendar and reload this page.';
           return;
         }
+        if (window.plausible) window.plausible('Booking Request Submit');
       });
 
       if (!fa) return;

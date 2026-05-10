@@ -15,7 +15,7 @@ Single-page site: `index.html` + `images/` + satellite pages. Form submissions u
 - **404** — `404.html` (configure host to use it if supported).
 - **robots.txt** / **sitemap.xml** — Present; require **`REPLACE_SITE_PUBLIC_URL`** (see [`DEPLOY.md`](DEPLOY.md)).
 - **Security headers** — `_headers` for Netlify-style hosts.
-- **Gallery** — Missing thumbnails hide via `error` handler on `.location-gallery img`.
+- **Gallery** — Missing map tiles and property photos hide via `error` handler on `.location-gallery-tiles img` and `.property-grid img` (whole `<figure>` hidden).
 - **Pricing source of truth** — Comment above `nightlyRates` in `index.html` reminds operators to sync JS + calendar markup with real policy.
 - **Analytics hook** — Plausible snippet commented in `index.html` (see [`DEPLOY.md`](DEPLOY.md)).
 

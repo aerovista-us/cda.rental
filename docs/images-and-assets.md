@@ -8,6 +8,8 @@ Static HTML in `index.html` references files under **`images/`** in the same fol
 |-------|------|
 | `images/cdasunset.png` | Background photo for `.hero-card` (panel with “Minutes from the action. Far enough to breathe.”). Also referenced as **`og:image`** / **`twitter:image`** after you set **`REPLACE_SITE_PUBLIC_URL`** in `index.html` (see `docs/DEPLOY.md`). |
 
+For share previews, you can swap `og:image` / `twitter:image` to a dedicated **`images/og-share.jpg`** (1200×630 or similar) once exported — keep URLs absolute after deploy.
+
 ## Site icon
 
 | Asset | Role |
@@ -18,11 +20,30 @@ Static HTML in `index.html` references files under **`images/`** in the same fol
 
 | Asset | Role |
 |-------|------|
-| `images/map.jpg` | Strategic map image behind the **Strategic CDA Location** label and pin. |
-| `images/cda-area-01.jpg` | Gallery thumbnail — area context. |
-| `images/cda-area-02.jpg` | Gallery thumbnail — approach / neighborhood. |
-| `images/cda-area-03.jpg` | Gallery thumbnail — extra local reference. |
+| `images/map.png` | Strategic map image behind the **Strategic CDA Location** label and pin (also listed as `map.jpg` in older notes — **use one filename** and match `index.html`). |
+| `images/gallery-area-context.jpg` | Square tile — **Area Context** (captions are below the image in the layout). |
+| `images/gallery-approach-roads.jpg` | Square tile — **Approach Roads**. |
+| `images/gallery-race-logistics.jpg` | Square tile — **Race Logistics**. |
 
-Rename your exported files to match these names, **or** edit the `src` / `srcset` attributes in `index.html` to match whatever filenames you keep in `images/`.
+Rename your exported files to match these names, **or** edit the `src` attributes in `index.html` to match whatever filenames you keep in `images/`.
 
-If you only need the map, remove or comment out the extra `<img>` elements inside `.location-gallery`.
+If a thumbnail file is missing, the browser hides that `<figure>` automatically (see `index.html` script).
+
+## Property gallery (`#property`)
+
+Placeholder paths for the stay proof grid:
+
+| File | Label on page |
+|------|----------------|
+| `images/property-exterior.jpg` | Front exterior |
+| `images/property-living.jpg` | Living room |
+| `images/property-kitchen.jpg` | Kitchen |
+| `images/property-bedroom-1.jpg` | Bedroom 1 |
+| `images/property-bedroom-2.jpg` | Bedroom 2 |
+| `images/property-bedroom-3.jpg` | Bedroom 3 |
+| `images/property-bathroom.jpg` | Bathrooms |
+| `images/property-parking.jpg` | Parking / driveway |
+| `images/property-gear.jpg` | Gear / bike staging |
+| `images/property-patio.jpg` | Backyard or patio |
+
+Missing files hide that card until you add the asset.

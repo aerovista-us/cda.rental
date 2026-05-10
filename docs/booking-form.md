@@ -43,6 +43,28 @@ On load, the script sets `method="POST"` and, for `formspree.io`, adds `_subject
 
 Any provider that accepts a normal browser `POST` with fields matching the form inputs (`name`, `phone`, `email`, dates, etc.) works if you set `formAction` to its endpoint.
 
+### Fields sent to Formspree (`request.html`)
+
+Visible: **`name`**, **`phone`**, **`email`**, **`checkin`**, **`checkout`**, **`guests`**, **`vehicles`**, **`purpose`**, **`notes`**.
+
+Hidden (dates & quote snapshot):
+
+| Field | Purpose |
+|-------|---------|
+| `form_source` | Constant `heartofawl_request` |
+| `selected_nights` | Comma-separated ISO dates (same as calendar) |
+| `selected_nights_iso` | Duplicate list for clarity in exports |
+| `nights_count` | Number of nights |
+| `selected_nights_readable` | ISO + human label per night |
+| `per_night_rates` | `YYYY-MM-DD:rate_usd` pairs, comma-separated |
+| `first_night_iso`, `last_night_iso`, `checkout_morning_iso` | Span summary |
+| `peak_block_complete` | `yes` / `no` — all four Jun 18–21 nights included |
+| `nightly_subtotal_usd`, `cleaning_fee_usd`, `logistics_fee_usd`, `predeposit_total_usd`, `reserve_estimate_usd`, `security_deposit_usd` | Integers (USD) |
+| `estimate_predeposit`, `estimate_reserve` | Same totals, formatted currency strings |
+| `submission_digest` | Multi-line text snapshot for email readability |
+
+Values are refreshed whenever the recap updates and **again on submit** so the POST body matches the latest selection.
+
 ### 2. Mailto fallback (`mailto`)
 
 If you do not use an HTTPS endpoint, set an inbox address:

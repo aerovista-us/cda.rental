@@ -12,6 +12,7 @@
   <meta property="og:description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
   <meta property="og:url" content="REPLACE_SITE_PUBLIC_URL/" />
   <meta property="og:image" content="REPLACE_SITE_PUBLIC_URL/images/cdasunset.png" />
+  <meta property="og:image:alt" content="Coeur d'Alene evening light — Heart of Awl Basecamp private race-week stay" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay" />
@@ -19,6 +20,8 @@
   <meta name="twitter:image" content="REPLACE_SITE_PUBLIC_URL/images/cdasunset.png" />
   <meta name="theme-color" content="#05070b" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Traffic: set content to your site hostname for Plausible (e.g. heartofawl.yourdomain.com). Leave empty to disable. -->
+  <meta name="analytics-domain" content="" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -145,6 +148,9 @@ header {
 }
 
 .brand-mark svg { width: 28px; height: 28px; }
+
+.brand-title { font-size: 15px; letter-spacing: 0.04em; line-height: 1.15; }
+.brand-basecamp { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; color: var(--cyan-2); }
 
 .nav-links {
   display: flex;
@@ -387,19 +393,46 @@ section { padding: 58px 0; }
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.location-gallery {
+.location-gallery-tiles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
-.location-gallery img {
-  width: 100%;
-  height: 112px;
-  object-fit: cover;
+.loc-tile {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loc-tile .tile-img {
+  aspect-ratio: 1;
   border-radius: 18px;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.loc-tile .tile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.loc-tile figcaption {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.loc-tile .tile-cap-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.4;
 }
 
 .map-label strong { display: block; font-size: 20px; margin-bottom: 4px; }
@@ -478,6 +511,63 @@ section { padding: 58px 0; }
 
 .price { margin: 8px 0; font-size: clamp(40px, 5vw, 66px); font-weight: 950; line-height: 0.95; letter-spacing: -0.06em; }
 .price small { color: var(--muted); font-size: 16px; letter-spacing: 0; font-weight: 780; }
+
+.price-hero {
+  display: grid;
+  gap: 14px;
+  margin: 12px 0 16px;
+  padding: 18px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.price-hero-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--soft);
+  letter-spacing: 0.03em;
+}
+
+.price-hero-num {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+  color: var(--text);
+}
+
+.price-hero-row.accent .price-hero-num { color: var(--cyan-2); }
+
+.price-no-charge {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--green);
+  letter-spacing: 0.02em;
+}
+
+.price-sub {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.quote-muted {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.quote-muted .quote-line { font-size: 14px; padding: 10px 0; }
+.quote-muted .date-note { margin-top: 8px; font-size: 12px; }
 
 .fee-row, .quote-line {
   display: flex;
@@ -560,10 +650,157 @@ input:focus, select:focus, textarea:focus { border-color: rgba(47, 231, 255, 0.7
 
 .footer-cta h2 { margin: 0 0 14px; font-size: clamp(34px, 5vw, 64px); line-height: 0.95; letter-spacing: -0.055em; }
 .footer-cta p { max-width: 720px; margin: 0 auto 22px; color: var(--muted); line-height: 1.62; }
+
+.hero-tagline {
+  margin: -8px 0 22px;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.why-home {
+  padding: 52px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(47, 231, 255, 0.08), transparent 55%);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.why-card {
+  padding: 18px 20px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.why-card strong { color: var(--text); display: block; margin-bottom: 6px; font-size: 16px; }
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.prop-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prop-card .prop-img {
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.prop-card .prop-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prop-card figcaption {
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--soft);
+  line-height: 1.35;
+}
+
+.property-note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 10px;
+  max-width: 800px;
+}
+
+.faq-list details {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0 16px;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  padding: 16px 0;
+  font-weight: 800;
+  color: var(--text);
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker { display: none; }
+
+.faq-list details[open] summary { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+
+.faq-list details p {
+  margin: 0;
+  padding: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.host-card {
+  text-align: left;
+  max-width: 640px;
+  margin: 0 auto 28px;
+  padding: 22px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(47, 231, 255, 0.22);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.host-card h3 { margin: 0 0 12px; font-size: 19px; }
+.host-card ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.55; font-size: 14px; }
+.host-card li { margin-bottom: 8px; }
+
+.sticky-mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(5, 7, 11, 0.94);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.sticky-mobile-cta .btn.primary {
+  width: 100%;
+  min-height: 50px;
+  font-size: 15px;
+}
+
 footer { padding: 34px 0 48px; color: var(--muted); font-size: 13px; line-height: 1.6; }
 footer b { color: var(--text); }
 
 @media (max-width: 940px) {
+  .location-gallery-tiles { grid-template-columns: 1fr; }
   .hero-grid, .location-card, .booking-shell, .form-wrap { grid-template-columns: 1fr; }
   .grid-3, .grid-2, .process, .pay-grid { grid-template-columns: 1fr; }
   .quick-stats { grid-template-columns: 1fr 1fr; }
@@ -574,12 +811,12 @@ footer b { color: var(--text); }
 }
 
 @media (max-width: 560px) {
+  body.has-sticky-cta { padding-bottom: 88px; }
+  .sticky-mobile-cta { display: block; }
   .quick-stats, .field-2 { grid-template-columns: 1fr; }
   .hero { padding-top: 46px; }
   .btn { width: 100%; }
   .day { min-height: 62px; padding: 8px; }
-  .location-gallery { grid-template-columns: 1fr; }
-  .location-gallery img { height: 160px; }
   .day small { display: none; }
   .cal-head { display: block; }
   .legend { margin-top: 10px; }
@@ -589,7 +826,7 @@ footer b { color: var(--text); }
 
   </style>
 </head>
-<body>
+<body class="has-sticky-cta">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="top-notice">Independent private lodging near Coeur d'Alene Ironman weekend activity. Not affiliated with, sponsored by, or endorsed by IRONMAN® or any race organizer.</div>  <header>
     <div class="wrap nav">
@@ -600,12 +837,14 @@ footer b { color: var(--text); }
             <path d="M25.3 52L31.8 40.3L38.4 52H25.3Z" fill="#2fe7ff"/>
           </svg>
         </span>
-        <span>Heart of Awl</span>
+        <span class="brand-title">Heart of Awl <span class="brand-basecamp">Basecamp</span></span>
       </a>
       <nav class="nav-links" aria-label="Page navigation">
         <a href="#location">Location</a>
+        <a href="#why-home">Why a home</a>
+        <a href="#property">Home tour</a>
         <a href="#calendar">Dates</a>
-        <a href="#payment">Estimate</a>
+        <a href="#faq">FAQ</a>
         <a href="request.html">Request</a>
       </nav>
       <a class="btn primary href-request" href="request.html">Request Booking</a>
@@ -616,6 +855,7 @@ footer b { color: var(--text); }
         <div>
           <div class="eyebrow">Ironman Weekend · June 12–23 · Coeur d'Alene, Idaho</div>
           <h1><span>Heart of Awl</span><span>Basecamp.</span></h1>
+          <p class="hero-tagline">Private CDA race-week lodging</p>
           <p class="lead">A private 3 bedroom, 2 bathroom Coeur d'Alene craftsman-style home for athletes, families, and support crews who want a calm place to rest, prepare, and recover during race week.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#calendar">Choose Your Dates</a>
@@ -653,10 +893,28 @@ footer b { color: var(--text); }
         <div class="map-pin" aria-hidden="true"></div>
         <div class="map-label"><strong>Strategic CDA Location</strong><span>North-side logistics near groceries, freeway movement, and downtown/lake access.</span></div>
       </div>
-      <div class="location-gallery" aria-label="Area reference photos">
-        <img src="images/cda-area-01.jpg" alt="Coeur d'Alene area context near the stay" loading="lazy" decoding="async" />
-        <img src="images/cda-area-02.jpg" alt="Neighborhood and approach roads near north Coeur d'Alene" loading="lazy" decoding="async" />
-        <img src="images/cda-area-03.jpg" alt="Additional local reference for race-week logistics" loading="lazy" decoding="async" />
+      <div class="location-gallery-tiles" aria-label="Area reference photos">
+        <figure class="loc-tile">
+          <div class="tile-img">
+            <img src="images/gallery-area-context.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>Area Context</figcaption>
+          <span class="tile-cap-sub">Lake, downtown, and north-corridor orientation.</span>
+        </figure>
+        <figure class="loc-tile">
+          <div class="tile-img">
+            <img src="images/gallery-approach-roads.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>Approach Roads</figcaption>
+          <span class="tile-cap-sub">Freeway and surface routes for arrivals and crew runs.</span>
+        </figure>
+        <figure class="loc-tile">
+          <div class="tile-img">
+            <img src="images/gallery-race-logistics.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>Race Logistics</figcaption>
+          <span class="tile-cap-sub">How your group moves during race week.</span>
+        </figure>
       </div>
     </div>
     <div class="card">
@@ -673,6 +931,22 @@ footer b { color: var(--text); }
   </div>
 </section>
 
+<section class="why-home" id="why-home">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why crews choose a home base</h2>
+      <p>For Ironman families and support crews, a whole home beats squeezing into hotel rooms when you need staging, recovery, and coordination.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><strong>Room for gear</strong> Bikes, coolers, nutrition, ice, and recovery supplies stay organized instead of cluttering a single room.</div>
+      <div class="why-card"><strong>Easier meals</strong> Kitchen space for pre-race meals, early breakfasts, and late-night reset without lobby noise.</div>
+      <div class="why-card"><strong>Crew coordination</strong> Space for briefings, schedules, and family support without hallway traffic.</div>
+      <div class="why-card"><strong>Quieter recovery</strong> Downshift after the event in a private setting built for rest.</div>
+      <div class="why-card"><strong>Reviewed arrival</strong> Parking and vehicle count are confirmed before approval so everyone knows the plan.</div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="section-head">
@@ -684,6 +958,28 @@ footer b { color: var(--text); }
       <article class="card"><div class="icon">🛌</div><h3>Comfortable Group Layout</h3><p>Designed for 6–8 guests comfortably, with larger groups considered upon approval depending on sleeping arrangements, parking, and stay purpose.</p></article>
       <article class="card"><div class="icon">🧾</div><h3>Simple Request Process</h3><p>Submit your dates and details first. Payment and agreement instructions are sent after the stay request is reviewed.</p></article>
     </div>
+  </div>
+</section>
+
+<section id="property">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>See the home before you request</h2>
+      <p>Front exterior, living areas, kitchen, bedrooms, bathrooms, parking, bike or gear staging, and outdoor space — the details crews care about before they commit.</p>
+    </div>
+    <div class="property-grid" aria-label="Property photos">
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-exterior.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Front exterior</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-living.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Living room</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-kitchen.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Kitchen</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-bedroom-1.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Bedroom 1</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-bedroom-2.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Bedroom 2</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-bedroom-3.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Bedroom 3</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-bathroom.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Bathrooms</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-parking.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Parking / driveway</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-gear.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Gear / bike staging</figcaption></figure>
+      <figure class="prop-card"><div class="prop-img"><img src="images/property-patio.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" /></div><figcaption>Backyard or patio</figcaption></figure>
+    </div>
+    <p class="property-note">Host checklist: add real photos under <code style="font-size:12px;color:var(--muted);">images/</code> using the filenames in <code style="font-size:12px;color:var(--muted);">docs/images-and-assets.md</code>, or update paths here. Missing shots stay hidden until the files exist.</p>
   </div>
 </section>
 
@@ -743,7 +1039,18 @@ footer b { color: var(--text); }
       <div class="price-stack">
         <div class="price-card">
           <div class="eyebrow">Your Selected Stay</div>
-          <div class="price"><span id="packageTotal">$2,650</span> <small id="packageNights">/ selected stay before deposit</small></div>
+          <div class="price-hero">
+            <div class="price-hero-row">
+              <span class="price-hero-label">Estimated stay total</span>
+              <strong class="price-hero-num" id="quoteTotal">$3,000</strong>
+            </div>
+            <div class="price-hero-row accent">
+              <span class="price-hero-label">Due after approval to reserve</span>
+              <strong class="price-hero-num" id="quoteReserve">$950</strong>
+            </div>
+            <p class="price-no-charge">No charge when submitting request.</p>
+          </div>
+          <p class="price-sub" id="packageNights">4 nights selected · full breakdown below</p>
           <p style="color:var(--muted);line-height:1.62;margin:0 0 18px;">Build your stay from nights June 12–23 (tap calendar). Non-consecutive nights are priced separately.</p>
           <div class="quote-box">
             <div class="field-2">
@@ -751,24 +1058,28 @@ footer b { color: var(--text); }
               <div><label for="quoteCheckout">Morning after last night</label><input id="quoteCheckout" type="date" min="2026-06-13" max="2026-06-24" value="2026-06-22" readonly aria-describedby="quote-date-source"></div>
             </div>
             <p id="quote-date-source" style="color:var(--muted);font-size:12px;line-height:1.45;margin:-6px 0 14px;">Synced from calendar selection.</p>
-            <div class="quote-line"><span>Nightly subtotal</span><strong id="quoteNightly">$2,250</strong></div>
-            <div class="quote-line"><span>Cleaning / turnover</span><strong id="quoteCleaning">$225</strong></div>
-            <div class="quote-line"><span>Event logistics</span><strong id="quoteLogistics">$175</strong></div>
-            <div class="quote-line"><span>Refundable security deposit</span><strong id="quoteDeposit">$350</strong></div>
-            <div class="quote-line big"><span>Estimated total</span><strong id="quoteTotal">$3,000</strong></div>
-            <div class="quote-line big"><span>Due to reserve</span><strong id="quoteReserve">$950</strong></div>
-            <p class="date-note">Estimate only. Lodging and sales taxes depend on jurisdiction and are itemized on your confirmation before payment. Reservation is not confirmed until approval, deposit, and agreement are complete.</p>
+            <div class="quote-muted">
+              <div class="quote-line"><span>Nightly subtotal</span><strong id="quoteNightly">$2,250</strong></div>
+              <div class="quote-line"><span>Cleaning / turnover</span><strong id="quoteCleaning">$225</strong></div>
+              <div class="quote-line"><span>Event logistics</span><strong id="quoteLogistics">$175</strong></div>
+              <div class="quote-line"><span>Refundable security deposit</span><strong id="quoteDeposit">$350</strong></div>
+              <p class="date-note">Taxes and final terms are confirmed before payment. Not a confirmed reservation until approval, deposit, and agreement are complete.</p>
+            </div>
           </div>
           <a class="btn hot href-request" href="request.html" style="margin-top:14px;">Request Selected Dates</a>
         </div>
 
         <div class="card">
-          <h3>Stay rules preview</h3>
+          <h3>House rules preview</h3>
           <ul class="list">
-            <li><span class="check">✓</span><span>Flexible dates available June 12–23.</span></li>
-            <li><span class="check">✓</span><span>Optimized for 6–8 guests with larger groups reviewed individually.</span></li>
-            <li><span class="check">✓</span><span>Quiet hours, parking plan, and signed guest list required.</span></li>
-            <li><span class="warn">!</span><span>No confirmation until approval, payment, and agreement are complete.</span></li>
+            <li><span class="check">✓</span><span>No parties or hosted events — private crew stays only.</span></li>
+            <li><span class="check">✓</span><span>Quiet hours enforced for neighbors and recovery.</span></li>
+            <li><span class="check">✓</span><span>Approved guests only — signed guest list.</span></li>
+            <li><span class="check">✓</span><span>Parking plan confirmed before approval.</span></li>
+            <li><span class="check">✓</span><span>No smoking inside.</span></li>
+            <li><span class="check">✓</span><span>Bike and gear storage only in designated areas (confirmed at booking).</span></li>
+            <li><span class="check">✓</span><span>Pets: not allowed unless pre-approved in writing.</span></li>
+            <li><span class="warn">!</span><span>June 12–23 availability; 6–8 guests typical — larger groups reviewed case by case.</span></li>
           </ul>
         </div>
       </div>
@@ -828,12 +1139,68 @@ footer b { color: var(--text); }
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>FAQ</h2>
+      <p>Practical answers before you submit — nothing replaces the approval email and rental agreement.</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Is this official Ironman lodging?</summary>
+        <p>No. This is independent private lodging near Ironman weekend activity. It is not affiliated with, sponsored by, or endorsed by IRONMAN® or any race organizer.</p>
+      </details>
+      <details>
+        <summary>How many guests can stay?</summary>
+        <p>The home is presented for about 6–8 guests (1320 sqft, 3 bed / 2 bath). Larger groups may be considered after review of sleeping arrangements, parking, and stay purpose.</p>
+      </details>
+      <details>
+        <summary>Is there bike storage?</summary>
+        <p>Bike and gear staging uses designated areas agreed at booking — not hallways or bedrooms unless approved. Details are confirmed after approval.</p>
+      </details>
+      <details>
+        <summary>How does payment work?</summary>
+        <p>Submitting a request costs nothing. After approval, you receive a secure link for the reserve deposit. Balance and security deposit handling are spelled out before you pay.</p>
+      </details>
+      <details>
+        <summary>Is the deposit refundable?</summary>
+        <p>Refund and cancellation terms depend on your rental agreement and timing — they are provided clearly before you commit funds.</p>
+      </details>
+      <details>
+        <summary>When do I get the address?</summary>
+        <p>The exact address and arrival instructions are shared only after the stay is reviewed and approved, required agreement steps are complete, and reservation payment milestones are met.</p>
+      </details>
+      <details>
+        <summary>Can I book only part of the date range?</summary>
+        <p>Yes. Select any pattern of nights June 12–23 on the calendar; Jun 18–21 moves as one four-night peak block.</p>
+      </details>
+      <details>
+        <summary>Are pets allowed?</summary>
+        <p>Not unless approved in writing before arrival. Default is no pets.</p>
+      </details>
+      <details>
+        <summary>Is parking available?</summary>
+        <p>Parking is reviewed with your vehicle count before approval so the plan works for your crew.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section id="request">
   <div class="wrap footer-cta">
-    <h2>Continue to your booking request.</h2>
-    <p>Select nights on the calendar above (Jun 18–21 select as one block), review your estimate, then confirm everything on the secure request page.</p>
+    <div class="host-card">
+      <h3>After you submit</h3>
+      <ul>
+        <li><strong>Who replies:</strong> The host reviews each request and replies to the email address you provide.</li>
+        <li><strong>When:</strong> Typically within one business day, often sooner during race season.</li>
+        <li><strong>Verification:</strong> Guest list, agreement, and basic verification may be required for approved stays.</li>
+        <li><strong>Address:</strong> Exact address and arrival instructions are shared only after approval, signed agreement as required, and payment steps toward the reservation are complete.</li>
+      </ul>
+    </div>
+    <h2>Ready to check your dates?</h2>
+    <p>Submit your group size, dates, vehicles, and race-week needs. <strong style="color:var(--text);">No payment is due until the stay is reviewed and approved.</strong></p>
     <a class="btn primary href-request" href="request.html">Open booking request form</a>
-    <p style="margin-top:18px;color:var(--muted);font-size:14px;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55;"><strong style="color:var(--text);">No payment here.</strong> Private whole-home beats squeezing crews into hotels when you need recovery space and gear staging. We review fit and reply by email — lock dates early while race-week inventory is predictable.</p>
+    <p style="margin-top:22px;color:var(--muted);font-size:14px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.55;">Select nights on the calendar first (Jun 18–21 as one block), review your estimate, then confirm details on the secure request page. Lock timing early while crew logistics are still predictable.</p>
   </div>
 </section>
 
@@ -845,9 +1212,21 @@ footer b { color: var(--text); }
       <p style="margin-top:16px;font-size:13px;"><a href="privacy.html" style="color:var(--muted);">Privacy</a> · <a href="terms.html" style="color:var(--muted);">Terms</a></p>
     </div>
   </footer>
-  <!-- Optional analytics: uncomment and set data-domain after deploy (see docs/DEPLOY.md)
-  <script defer data-domain="YOUR_DOMAIN" src="https://plausible.io/js/script.js"></script>
-  -->
+  <div class="sticky-mobile-cta" role="region" aria-label="Request booking">
+    <a class="btn primary href-request" href="request.html">Request Dates · No payment today</a>
+  </div>
+  <script>
+    (function () {
+      var m = document.querySelector('meta[name="analytics-domain"]');
+      var d = m && m.getAttribute('content') && m.getAttribute('content').trim();
+      if (!d) return;
+      var s = document.createElement('script');
+      s.defer = true;
+      s.setAttribute('data-domain', d);
+      s.src = 'https://plausible.io/js/script.js';
+      document.head.appendChild(s);
+    })();
+  </script>
   <script>
     /* GO-LIVE: Keep nightlyRates and calendar day classes (open/hold/booked) aligned with real availability and published pricing for your season. */
     const nightlyRates = {
@@ -929,8 +1308,10 @@ footer b { color: var(--text); }
         quoteCheckout.value = '';
       }
 
-      const nightsLabel = nights === 0 ? 'Select nights June 12–23' : `/ ${nights} selected night${nights === 1 ? '' : 's'} before refundable deposit`;
-      set('packageTotal', nights === 0 ? '—' : money(preDepositTotal));
+      const nightsLabel =
+        nights === 0
+          ? 'Select nights on the calendar (June 12–23)'
+          : `${nights} night${nights === 1 ? '' : 's'} selected · full breakdown below`;
       set('packageNights', nightsLabel);
       set('quoteNightly', money(nightlySubtotal));
       set('quoteCleaning', money(cleaningApplied));
@@ -984,8 +1365,12 @@ footer b { color: var(--text); }
       a.addEventListener('click', persistSelectionAndOpenRequest);
     });
 
-    document.querySelectorAll('.location-gallery img').forEach(img => {
-      img.addEventListener('error', () => { img.style.display = 'none'; });
+    document.querySelectorAll('.location-gallery-tiles img, .property-grid img').forEach(img => {
+      img.addEventListener('error', () => {
+        const fig = img.closest('figure');
+        if (fig) fig.style.display = 'none';
+        else img.style.display = 'none';
+      });
     });
 
     calculateQuote();
