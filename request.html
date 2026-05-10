@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Booking request | Heart of Awl Basecamp</title>
-  <meta name="description" content="Confirm your Coeur d'Alene Ironman weekend dates and submit your stay request for Heart of Awl Basecamp." />
-  <meta name="site-public-url" content="REPLACE_SITE_PUBLIC_URL" />
-  <link rel="canonical" href="REPLACE_SITE_PUBLIC_URL/request.html" />
-  <meta name="theme-color" content="#05070b" />
+  <title>Booking request | CDA Race Week Basecamp</title>
+  <meta name="description" content="Confirm your Coeur d'Alene race-week dates and submit your stay request — private 3BR / 2BA crew home. No charge until approval." />
+  <meta name="site-public-url" content="https://aerovista-us.github.io/cda.rental" />
+  <link rel="canonical" href="https://aerovista-us.github.io/cda.rental/request.html" />
+  <meta name="theme-color" content="#07131d" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <!-- Traffic: set to your site hostname for Plausible pageviews & UTM capture (see docs/analytics.md). Leave empty to disable. -->
   <meta name="analytics-domain" content="" />
@@ -166,7 +166,7 @@
     <div class="wrap nav">
       <a class="back-link" href="index.html#calendar">← Back to calendar &amp; estimate</a>
       <a class="brand" href="index.html">
-        <span>Heart of Awl</span>
+        <span>CDA Race Week Basecamp</span>
       </a>
     </div>
   </header>
@@ -354,7 +354,7 @@
       if (!nightsSorted.length || !validatePeakBlock(nightsSorted)) return '';
       const t = computeTotals(nightsSorted);
       const lines = [
-        'Heart of Awl Basecamp — submission snapshot',
+        'CDA Race Week Basecamp — submission snapshot',
         'Form: request.html → Formspree',
         '---',
         'SELECTED NIGHTS (ISO 8601 date): ' + nightsSorted.join(', '),
@@ -529,11 +529,11 @@
       };
 
       if (fa.includes('formsubmit.co')) {
-        addHidden('_subject', 'Heart of Awl — booking request');
+        addHidden('_subject', 'CDA Race Week Basecamp — booking request');
         addHidden('_template', 'table');
         redirectAfterSubmit();
       } else if (fa.includes('formspree.io')) {
-        addHidden('_subject', 'Heart of Awl — booking request');
+        addHidden('_subject', 'CDA Race Week Basecamp — booking request');
         redirectAfterSubmit();
       }
     }

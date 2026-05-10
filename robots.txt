@@ -1,5 +1,5 @@
-# Allow indexing once REPLACE_SITE_PUBLIC_URL is replaced in this file and in sitemap.xml
+# Production GitHub Pages site
 User-agent: *
 Allow: /
 
-Sitemap: REPLACE_SITE_PUBLIC_URL/sitemap.xml
+Sitemap: https://aerovista-us.github.io/cda.rental/sitemap.xml

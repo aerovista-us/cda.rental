@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>REPLACE_SITE_PUBLIC_URL/</loc>
+    <loc>https://aerovista-us.github.io/cda.rental/</loc>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>REPLACE_SITE_PUBLIC_URL/request.html</loc>
+    <loc>https://aerovista-us.github.io/cda.rental/request.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>REPLACE_SITE_PUBLIC_URL/privacy.html</loc>
+    <loc>https://aerovista-us.github.io/cda.rental/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>REPLACE_SITE_PUBLIC_URL/terms.html</loc>
+    <loc>https://aerovista-us.github.io/cda.rental/terms.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

@@ -2,23 +2,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay</title>
-  <meta name="description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
-  <!-- Find/replace REPLACE_SITE_PUBLIC_URL with your live HTTPS origin (no trailing slash), e.g. https://stay.example.com — same token is used in robots.txt, sitemap.xml, privacy.html, and terms.html -->
-  <meta name="site-public-url" content="REPLACE_SITE_PUBLIC_URL" />
-  <link rel="canonical" href="REPLACE_SITE_PUBLIC_URL/" />
+  <title>CDA Race Week Basecamp | Private Coeur d'Alene Race-Week Rental</title>
+  <meta
+    name="description"
+    content="Private 3BR / 2BA Coeur d'Alene home for athletes, families, and support crews visiting CDA for race week. Request dates with no payment due today."
+  />
+  <meta name="site-public-url" content="https://aerovista-us.github.io/cda.rental" />
+  <link rel="canonical" href="https://aerovista-us.github.io/cda.rental/" />
+  <!-- Open Graph / Facebook / Messenger / iMessage -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay" />
-  <meta property="og:description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
-  <meta property="og:url" content="REPLACE_SITE_PUBLIC_URL/" />
-  <meta property="og:image" content="REPLACE_SITE_PUBLIC_URL/images/cdasunset.png" />
-  <meta property="og:image:alt" content="Coeur d'Alene evening light — Heart of Awl Basecamp private race-week stay" />
+  <meta property="og:title" content="CDA Race Week Basecamp" />
+  <meta
+    property="og:description"
+    content="Private 3BR / 2BA Coeur d'Alene home for athletes, families, and support crews. Space to sleep, prep, park, eat, and recover together."
+  />
+  <meta property="og:url" content="https://aerovista-us.github.io/cda.rental/" />
+  <meta property="og:image" content="https://aerovista-us.github.io/cda.rental/assets/share-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="CDA Race Week Basecamp — private 3BR / 2BA Coeur d'Alene race-week home" />
   <meta property="og:locale" content="en_US" />
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Heart of Awl Basecamp | Coeur d'Alene Ironman Weekend Stay" />
-  <meta name="twitter:description" content="Private 3 bed, 2 bath Coeur d'Alene Ironman weekend stay for athletes, families, and support crews. Choose dates June 12–23, review pricing, and request approval." />
-  <meta name="twitter:image" content="REPLACE_SITE_PUBLIC_URL/images/cdasunset.png" />
-  <meta name="theme-color" content="#05070b" />
+  <meta name="twitter:title" content="CDA Race Week Basecamp" />
+  <meta
+    name="twitter:description"
+    content="Private 3BR / 2BA CDA home base for athletes, families, and support crews."
+  />
+  <meta name="twitter:image" content="https://aerovista-us.github.io/cda.rental/assets/share-preview.jpg" />
+  <meta name="theme-color" content="#07131d" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <!-- Traffic: set content to your site hostname for Plausible (e.g. heartofawl.yourdomain.com). Leave empty to disable. -->
   <meta name="analytics-domain" content="" />
@@ -28,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LodgingBusiness","name":"Heart of Awl Basecamp","description":"Private Coeur d'Alene Ironman weekend stay for athletes, families, and support crews.","url":"REPLACE_SITE_PUBLIC_URL/","address":{"@type":"PostalAddress","addressLocality":"Coeur d'Alene","addressRegion":"ID","addressCountry":"US"}}
+  {"@context":"https://schema.org","@type":"LodgingBusiness","name":"CDA Race Week Basecamp","description":"Private 3BR / 2BA Coeur d'Alene home for athletes, families, and support crews. Space to sleep, prep, park, eat, and recover together.","url":"https://aerovista-us.github.io/cda.rental/","address":{"@type":"PostalAddress","addressLocality":"Coeur d'Alene","addressRegion":"ID","addressCountry":"US"}}
   </script>
   <style>
     :root {
@@ -329,7 +341,90 @@ section { padding: 58px 0; }
 
 .card h3 { margin: 0 0 10px; font-size: 22px; }
 .card p { margin: 0; color: var(--muted); line-height: 1.62; }
-.icon { font-size: 29px; margin-bottom: 14px; }
+.card .icon { margin: 0; }
+
+.card-icon-svg {
+  width: 44px;
+  height: 44px;
+  display: block;
+  margin-bottom: 14px;
+  color: var(--cyan);
+}
+
+.inline-icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: -0.15em;
+}
+
+.benefit-glyph {
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.benefit-glyph .inline-icon {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.list .check,
+.list .warn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.list .check .inline-icon { color: var(--green); }
+.list .warn .inline-icon { color: var(--orange); }
+
+.legend-swatch {
+  width: 11px;
+  height: 11px;
+  margin-right: 6px;
+  vertical-align: -2px;
+  display: inline-block;
+}
+
+.legend-swatch circle { fill: currentColor; }
+.legend-swatch.open { color: var(--green); }
+.legend-swatch.hold { color: var(--orange); }
+.legend-swatch.booked { color: var(--red); }
+
+.map-pin-wrap {
+  position: absolute;
+  right: calc(24% - 7px);
+  bottom: calc(35% - 14px);
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  color: var(--cyan);
+  filter: drop-shadow(0 0 14px rgba(47, 231, 255, 0.55));
+  pointer-events: none;
+}
+
+.map-pin-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
 
 .location-card { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; align-items: start; }
 
@@ -368,17 +463,6 @@ section { padding: 58px 0; }
   display: block;
 }
 
-.map-pin {
-  position: absolute;
-  right: 24%;
-  bottom: 35%;
-  z-index: 2;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 0 10px rgba(47, 231, 255, 0.18), 0 0 44px rgba(47, 231, 255, 0.65);
-}
 
 .map-label {
   position: absolute;
@@ -465,10 +549,12 @@ section { padding: 58px 0; }
 .cal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
 .cal-head h3 { margin: 0; font-size: 26px; }
 .legend { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: 12px; }
-.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
-.dot.open { background: var(--green); }
-.dot.hold { background: var(--orange); }
-.dot.booked { background: var(--red); }
+
+.legend .legend-inline {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
 
 .dow, .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
 .dow div { text-align: center; color: var(--muted); font-size: 12px; font-weight: 950; text-transform: uppercase; }
@@ -586,8 +672,8 @@ section { padding: 58px 0; }
 
 .list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
 .list li { display: flex; gap: 10px; color: var(--muted); line-height: 1.45; }
-.check { color: var(--green); font-weight: 950; }
-.warn { color: var(--orange); font-weight: 950; }
+.check { color: var(--green); }
+.warn { color: var(--orange); }
 
 .pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .pay-card { padding: 18px; border-radius: 22px; background: rgba(0, 0, 0, 0.23); border: 1px solid var(--line); }
@@ -827,39 +913,58 @@ footer b { color: var(--text); }
   </style>
 </head>
 <body class="has-sticky-cta">
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M4 11.25 12 4.25l8 7v8a1 1 0 01-1 1h-5v-6H10v6H5a1 1 0 01-1-1v-8z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.65"/><path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" d="M3 21v-2a5 5 0 015-5h2"/><circle cx="17" cy="8" r="3.25" fill="none" stroke="currentColor" stroke-width="1.65"/><path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" d="M21 21v-1.25a4 4 0 00-3.37-3.95"/></symbol>
+    <symbol id="i-pin-outline" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.65"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 4.45 5.57 10.86 6.64 12.04a1.25 1.25 0 002.72 0C15.43 19.86 21 13.45 21 9c0-3.87-3.13-7-7-7zm0 11.25A3.25 3.25 0 1112 6.75a3.25 3.25 0 010 6.5z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6.5 12.5l4 4 7-9"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h18.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></symbol>
+  </svg>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="top-notice">Independent private lodging near Coeur d'Alene Ironman weekend activity. Not affiliated with, sponsored by, or endorsed by IRONMAN® or any race organizer.</div>  <header>
+  <div class="top-notice">Independent private rental. Not affiliated with or endorsed by IRONMAN, IRONMAN 70.3, or event organizers.</div>  <header>
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Heart of Awl Basecamp home">
+      <a class="brand" href="#top" aria-label="CDA Race Week Basecamp home">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 52L31.8 8L57 52H45.4L31.8 27.8L18.3 52H7Z" fill="white"/>
-            <path d="M25.3 52L31.8 40.3L38.4 52H25.3Z" fill="#2fe7ff"/>
+            <defs>
+              <linearGradient id="brandMtn" x1="14" y1="10" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff"/>
+                <stop offset="1" stop-color="#c8f0ff"/>
+              </linearGradient>
+              <linearGradient id="brandPeak" x1="26" y1="38" x2="38" y2="52" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2fe7ff"/>
+                <stop offset="1" stop-color="#9af7ff"/>
+              </linearGradient>
+            </defs>
+            <path d="M7 52L31.8 8L57 52H45.4L31.8 27.8L18.3 52H7Z" fill="url(#brandMtn)"/>
+            <path d="M25.3 52L31.8 40.3L38.4 52H25.3Z" fill="url(#brandPeak)"/>
           </svg>
         </span>
-        <span class="brand-title">Heart of Awl <span class="brand-basecamp">Basecamp</span></span>
+        <span class="brand-title">CDA Race Week <span class="brand-basecamp">Basecamp</span></span>
       </a>
       <nav class="nav-links" aria-label="Page navigation">
         <a href="#location">Location</a>
         <a href="#why-home">Why a home</a>
+        <a href="#audiences">Who it's for</a>
         <a href="#property">Home tour</a>
         <a href="#calendar">Dates</a>
         <a href="#faq">FAQ</a>
         <a href="request.html">Request</a>
       </nav>
-      <a class="btn primary href-request" href="request.html">Request Booking</a>
+      <a class="btn primary href-request" href="request.html">Request Dates — No Payment Today</a>
     </div>
   </header>  <main id="main-content" tabindex="-1">
     <section class="hero" id="top">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Ironman Weekend · June 12–23 · Coeur d'Alene, Idaho</div>
-          <h1><span>Heart of Awl</span><span>Basecamp.</span></h1>
-          <p class="hero-tagline">Private CDA race-week lodging</p>
-          <p class="lead">A private 3 bedroom, 2 bathroom Coeur d'Alene craftsman-style home for athletes, families, and support crews who want a calm place to rest, prepare, and recover during race week.</p>
+          <div class="eyebrow">Race week · June 12–23 · Coeur d'Alene, Idaho</div>
+          <h1><span>CDA Race Week</span><span>Basecamp.</span></h1>
+          <p class="hero-tagline">Private Coeur d'Alene home for race-week stays</p>
+          <p class="lead">A private 3BR / 2BA home base for athletes, families, and support crews visiting Coeur d'Alene for race week. Space to sleep, prep, park, eat, recover, and keep the crew together.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#calendar">Choose Your Dates</a>
-            <a class="btn ghost" href="#payment">View Payment Estimate</a>
+            <a class="btn primary href-request" href="request.html">Request Dates — No Payment Today</a>
+            <a class="btn ghost" href="#calendar">Choose your dates</a>
           </div>
           <div class="quick-stats">
             <div class="stat"><strong>3 Bed / 2 Bath</strong><small>1320 sqft craftsman</small></div>
@@ -867,11 +972,11 @@ footer b { color: var(--text); }
             <div class="stat"><strong>June 12–23</strong><small>selectable dates</small></div>
             <div class="stat"><strong id="heroReserve">$950</strong><small>estimated reserve deposit</small></div>
           </div>
-        </div><div class="hero-card" role="img" aria-label="Private CDA home basecamp for Ironman weekend">
-      <div class="circle-badge">CDA<br><span>Base</span>Camp</div>
+        </div><div class="hero-card" role="img" aria-label="Private Coeur d'Alene race-week home base">
+      <div class="circle-badge">Race<br><span>Week</span></div>
       <div class="hero-panel">
-        <h3>Minutes from the action. Far enough to breathe.</h3>
-        <p>A practical home base with grocery access, freeway movement, crew staging, gear reset, quiet sleep, and a clear request-to-book process.</p>
+        <h3>Keep the crew together on race week.</h3>
+        <p>One private home base — not split hotel rooms. Room for gear and meals, space to coordinate, and quiet when athletes need sleep and routine.</p>
       </div>
     </div>
   </div>
@@ -890,7 +995,7 @@ footer b { color: var(--text); }
           loading="lazy"
           decoding="async"
         />
-        <div class="map-pin" aria-hidden="true"></div>
+        <div class="map-pin-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" role="presentation"><use href="#i-pin"/></svg></div>
         <div class="map-label"><strong>Strategic CDA Location</strong><span>North-side logistics near groceries, freeway movement, and downtown/lake access.</span></div>
       </div>
       <div class="location-gallery-tiles" aria-label="Area reference photos">
@@ -922,10 +1027,10 @@ footer b { color: var(--text); }
       <h2 style="font-size:clamp(31px,4vw,48px);line-height:1;margin:18px 0 12px;letter-spacing:-.045em;">Easy logistics. Better rest.</h2>
       <p>This is an authentic CDA craftsman-style home for guests who want a practical, comfortable place to rest, prepare, and recover during a busy event weekend.</p>
       <div class="benefit-list">
-        <div class="benefit">✓ <span><b>Easy supply runs:</b> groceries, snacks, hydration, and race-weekend essentials are nearby.</span></div>
-        <div class="benefit">✓ <span><b>Simpler arrival:</b> convenient freeway access helps your group get in, get settled, and move around town.</span></div>
-        <div class="benefit">✓ <span><b>Quieter reset:</b> a practical place to sleep, recover, and regroup away from the busiest downtown traffic.</span></div>
-        <div class="benefit">✓ <span><b>Clear booking:</b> group size, vehicles, and house rules are reviewed before your reservation is confirmed.</span></div>
+        <div class="benefit"><span class="benefit-glyph" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span><b>Easy supply runs:</b> groceries, snacks, hydration, and race-weekend essentials are nearby.</span></div>
+        <div class="benefit"><span class="benefit-glyph" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span><b>Simpler arrival:</b> convenient freeway access helps your group get in, get settled, and move around town.</span></div>
+        <div class="benefit"><span class="benefit-glyph" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span><b>Quieter reset:</b> a practical place to sleep, recover, and regroup away from the busiest downtown traffic.</span></div>
+        <div class="benefit"><span class="benefit-glyph" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span><b>Clear booking:</b> group size, vehicles, and house rules are reviewed before your reservation is confirmed.</span></div>
       </div>
     </div>
   </div>
@@ -934,29 +1039,30 @@ footer b { color: var(--text); }
 <section class="why-home" id="why-home">
   <div class="wrap">
     <div class="section-head">
-      <h2>Why crews choose a home base</h2>
-      <p>For Ironman families and support crews, a whole home beats squeezing into hotel rooms when you need staging, recovery, and coordination.</p>
+      <h2>Keep the crew together on race week</h2>
+      <p>A private home base for the whole crew — built for race-week reality, not a generic vacation rental. Hotels get expensive, rooms get split up, gear gets awkward, meals are harder, parking gets stressful, and coordination turns messy when everyone is scattered.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card"><strong>Room for gear</strong> Bikes, coolers, nutrition, ice, and recovery supplies stay organized instead of cluttering a single room.</div>
-      <div class="why-card"><strong>Easier meals</strong> Kitchen space for pre-race meals, early breakfasts, and late-night reset without lobby noise.</div>
-      <div class="why-card"><strong>Crew coordination</strong> Space for briefings, schedules, and family support without hallway traffic.</div>
-      <div class="why-card"><strong>Quieter recovery</strong> Downshift after the event in a private setting built for rest.</div>
-      <div class="why-card"><strong>Reviewed arrival</strong> Parking and vehicle count are confirmed before approval so everyone knows the plan.</div>
+      <div class="why-card"><strong>One roof, one plan</strong> Keep athletes, family, and support crew under one roof instead of juggling keys across hotel floors.</div>
+      <div class="why-card"><strong>Gear that fits</strong> Bikes, coolers, bags, and nutrition stay staged — not squeezed beside a hotel dresser.</div>
+      <div class="why-card"><strong>Food on your schedule</strong> Kitchen space for pre-race meals, early breakfast, and routine when it matters.</div>
+      <div class="why-card"><strong>Parking reviewed up front</strong> Vehicle count and arrival expectations are confirmed before approval.</div>
+      <div class="why-card"><strong>Quiet when it counts</strong> Sleep and recovery without lobby noise, elevators, and hallway traffic.</div>
+      <div class="why-card"><strong>Crew coordination</strong> Briefings, schedules, and support in shared space — not split across bookings.</div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="audiences">
   <div class="wrap">
     <div class="section-head">
-      <h2>Prepared for athletes, families, and support crews.</h2>
-      <p>Bring the people who help make race weekend work: athletes, partners, family, and support crew who want a clean, comfortable place to stay organized.</p>
+      <h2>Who it works for</h2>
+      <p>Same home base, different travel stories — athletes with crews, families, and guests still locking in race-week lodging.</p>
     </div>
     <div class="grid-3">
-      <article class="card"><div class="icon">🚴</div><h3>Gear Friendly</h3><p>Room for bikes, bags, coolers, nutrition bins, recovery supplies, and race-day staging.</p></article>
-      <article class="card"><div class="icon">🛌</div><h3>Comfortable Group Layout</h3><p>Designed for 6–8 guests comfortably, with larger groups considered upon approval depending on sleeping arrangements, parking, and stay purpose.</p></article>
-      <article class="card"><div class="icon">🧾</div><h3>Simple Request Process</h3><p>Submit your dates and details first. Payment and agreement instructions are sent after the stay request is reviewed.</p></article>
+      <article class="card"><div class="icon" aria-hidden="true"><svg class="card-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="#i-home"/></svg></div><h3>Athlete + support crew</h3><p>One home base for sleep, food, gear, and recovery — your people stay in sync.</p></article>
+      <article class="card"><div class="icon" aria-hidden="true"><svg class="card-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="#i-users"/></svg></div><h3>Family with the athlete</h3><p>Keep everyone together instead of splitting across separate hotel rooms.</p></article>
+      <article class="card"><div class="icon" aria-hidden="true"><svg class="card-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="#i-pin-outline"/></svg></div><h3>Race weekend &amp; regional guests</h3><p>Still accepting date requests for this private 3BR Coeur d'Alene race-week stay — coming to CDA for race weekend? Start with a simple request.</p></article>
     </div>
   </div>
 </section>
@@ -993,7 +1099,7 @@ footer b { color: var(--text); }
       <div class="calendar">
         <div class="cal-head">
           <h3>June 2026</h3>
-          <div class="legend"><span><i class="dot open"></i>Available</span><span><i class="dot hold"></i>Request-to-book</span><span><i class="dot booked"></i>Unavailable</span></div>
+          <div class="legend"><span class="legend-inline"><svg class="legend-swatch open" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5"/></svg>Available</span><span class="legend-inline"><svg class="legend-swatch hold" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5"/></svg>Request-to-book</span><span class="legend-inline"><svg class="legend-swatch booked" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5"/></svg>Unavailable</span></div>
         </div>
         <div class="cal-actions">
           <button type="button" class="btn ghost" id="clearNightSelection" aria-label="Clear all selected nights">Clear selection</button>
@@ -1066,20 +1172,20 @@ footer b { color: var(--text); }
               <p class="date-note">Taxes and final terms are confirmed before payment. Not a confirmed reservation until approval, deposit, and agreement are complete.</p>
             </div>
           </div>
-          <a class="btn hot href-request" href="request.html" style="margin-top:14px;">Request Selected Dates</a>
+          <a class="btn hot href-request" href="request.html" style="margin-top:14px;">Request Dates — No Payment Today</a>
         </div>
 
         <div class="card">
           <h3>House rules preview</h3>
           <ul class="list">
-            <li><span class="check">✓</span><span>No parties or hosted events — private crew stays only.</span></li>
-            <li><span class="check">✓</span><span>Quiet hours enforced for neighbors and recovery.</span></li>
-            <li><span class="check">✓</span><span>Approved guests only — signed guest list.</span></li>
-            <li><span class="check">✓</span><span>Parking plan confirmed before approval.</span></li>
-            <li><span class="check">✓</span><span>No smoking inside.</span></li>
-            <li><span class="check">✓</span><span>Bike and gear storage only in designated areas (confirmed at booking).</span></li>
-            <li><span class="check">✓</span><span>Pets: not allowed unless pre-approved in writing.</span></li>
-            <li><span class="warn">!</span><span>June 12–23 availability; 6–8 guests typical — larger groups reviewed case by case.</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>No parties or hosted events — private crew stays only.</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>Quiet hours enforced for neighbors and recovery.</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>Approved guests only — signed guest list.</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>Parking plan confirmed before approval.</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>No smoking inside.</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>Bike and gear storage only in designated areas (confirmed at booking).</span></li>
+            <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>Pets: not allowed unless pre-approved in writing.</span></li>
+            <li><span class="warn" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-alert"/></svg></span><span>June 12–23 availability; 6–8 guests typical — larger groups reviewed case by case.</span></li>
           </ul>
         </div>
       </div>
@@ -1113,10 +1219,10 @@ footer b { color: var(--text); }
           <div class="pay-card"><span class="pill good">Step 3</span><strong>Balance</strong><small>Pay the remaining balance before arrival details are released.</small></div>
         </div>
         <ul class="list">
-          <li><span class="check">✓</span><span>You’ll receive a secure payment link after approval.</span></li>
-          <li><span class="check">✓</span><span>A signed rental agreement is required before final confirmation.</span></li>
-          <li><span class="check">✓</span><span>Guest list and basic verification may be required for approved stays.</span></li>
-          <li><span class="warn">!</span><span>Security deposit handling will be explained clearly before you pay.</span></li>
+          <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>You’ll receive a secure payment link after approval.</span></li>
+          <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>A signed rental agreement is required before final confirmation.</span></li>
+          <li><span class="check" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check"/></svg></span><span>Guest list and basic verification may be required for approved stays.</span></li>
+          <li><span class="warn" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-alert"/></svg></span><span>Security deposit handling will be explained clearly before you pay.</span></li>
         </ul>
       </div>
     </div>
@@ -1199,7 +1305,7 @@ footer b { color: var(--text); }
     </div>
     <h2>Ready to check your dates?</h2>
     <p>Submit your group size, dates, vehicles, and race-week needs. <strong style="color:var(--text);">No payment is due until the stay is reviewed and approved.</strong></p>
-    <a class="btn primary href-request" href="request.html">Open booking request form</a>
+    <a class="btn primary href-request" href="request.html">Request Dates — No Payment Today</a>
     <p style="margin-top:22px;color:var(--muted);font-size:14px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.55;">Select nights on the calendar first (Jun 18–21 as one block), review your estimate, then confirm details on the secure request page. Lock timing early while crew logistics are still predictable.</p>
   </div>
 </section>
@@ -1213,7 +1319,7 @@ footer b { color: var(--text); }
     </div>
   </footer>
   <div class="sticky-mobile-cta" role="region" aria-label="Request booking">
-    <a class="btn primary href-request" href="request.html">Request Dates · No payment today</a>
+    <a class="btn primary href-request" href="request.html">Request Dates — No Payment Today</a>
   </div>
   <script>
     (function () {

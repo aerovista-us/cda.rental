@@ -1,10 +1,10 @@
-# Go-live checklist (Heart of Awl landing page)
+# Go-live checklist (CDA Race Week Basecamp)
 
 Single-page site: `index.html` + `images/` + satellite pages. Form submissions use Formspree (`BOOKING.formAction`).
 
 ## Implemented in repo
 
-- **SEO / sharing** — Canonical URL placeholder, Open Graph, Twitter Card, JSON-LD `LodgingBusiness`, theme color (see **`REPLACE_SITE_PUBLIC_URL`** in [`DEPLOY.md`](DEPLOY.md)).
+- **SEO / sharing** — Canonical + absolute **`assets/share-preview.jpg`** for Open Graph / Twitter (`index.html`), JSON-LD `LodgingBusiness`, theme color `#07131d` (see [`DEPLOY.md`](DEPLOY.md)).
 - **Favicon** — `favicon.svg`; linked from all pages.
 - **Typography** — Inter loaded via Google Fonts (matches CSS stack).
 - **Accessibility** — Skip link, `:focus-visible` outlines, `main` skip target with `tabindex="-1"`.
@@ -13,7 +13,7 @@ Single-page site: `index.html` + `images/` + satellite pages. Form submissions u
 - **Form** — Email **required**; privacy consent line + link to `privacy.html`; honeypot field `_gotcha`; Formspree POST unchanged.
 - **Legal pages** — `privacy.html`, `terms.html`; footer links + short-term rental note on index.
 - **404** — `404.html` (configure host to use it if supported).
-- **robots.txt** / **sitemap.xml** — Present; require **`REPLACE_SITE_PUBLIC_URL`** (see [`DEPLOY.md`](DEPLOY.md)).
+- **robots.txt** / **sitemap.xml** — Point at production GitHub Pages origin (see [`DEPLOY.md`](DEPLOY.md)).
 - **Security headers** — `_headers` for Netlify-style hosts.
 - **Gallery** — Missing map tiles and property photos hide via `error` handler on `.location-gallery-tiles img` and `.property-grid img` (whole `<figure>` hidden).
 - **Pricing source of truth** — Comment above `nightlyRates` in `index.html` reminds operators to sync JS + calendar markup with real policy.
@@ -21,10 +21,10 @@ Single-page site: `index.html` + `images/` + satellite pages. Form submissions u
 
 ## You still do manually
 
-1. **Find/replace `REPLACE_SITE_PUBLIC_URL`** everywhere (see [`DEPLOY.md`](DEPLOY.md)).
+1. **Share preview cache** — After changing **`assets/share-preview.jpg`**, test in iMessage / Messenger / Slack; rename file + meta tags if previews stay stale (see [`images-and-assets.md`](images-and-assets.md)).
 2. **Formspree** — Confirm production form settings, inbox, and domain verification in their UI.
 3. **Rates & calendar** — Align `nightlyRates` and calendar day classes with **actual** availability and pricing.
-4. **Deploy host** — HTTPS, optional custom domain, point **404** to `404.html` if the platform supports it.
+4. **Deploy host** — GitHub Pages HTTPS; optional custom domain requires updating every absolute URL and OG image link again.
 
 ## Already in good shape
 

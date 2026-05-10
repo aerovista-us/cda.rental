@@ -1,23 +1,15 @@
 # Deploy notes
 
-## One-time: set your public site URL
+## Production URL (GitHub Pages)
 
-Many files contain the placeholder **`REPLACE_SITE_PUBLIC_URL`** (your HTTPS origin **without** a trailing slash, e.g. `https://stay.example.com`).
+This repo is wired for **`https://aerovista-us.github.io/cda.rental`** (canonical, Open Graph / Twitter image URLs, JSON-LD `url`, `robots.txt` / `sitemap.xml`, legal page canonicals, `site-public-url`). Share previews use **`assets/share-preview.jpg`** at **absolute** HTTPS paths.
 
-Before going live, run a **project-wide find/replace** and substitute your real origin in:
+**Fork or new domain:** search and replace that origin everywhere it appears (same file list as below), and update **`og:image`** / **`twitter:image`** if the path changes.
 
-| File | Usage |
-|------|--------|
-| `index.html` | `canonical`, Open Graph, Twitter Card, JSON-LD `url`, `meta name="site-public-url"` |
-| `robots.txt` | `Sitemap:` line |
-| `sitemap.xml` | Each `<loc>` |
-| `privacy.html` | `link rel="canonical"` |
-| `terms.html` | `link rel="canonical"` |
+Validate after deploy:
 
-After replacement, validate:
-
-- **Facebook Sharing Debugger** / **Twitter Card Validator** (OG URLs must be absolute and reachable).
-- **`https://YOUR_DOMAIN/robots.txt`** and **`https://YOUR_DOMAIN/sitemap.xml`**.
+- **Facebook Sharing Debugger** / **Twitter Card Validator** — OG image must return **200** with **`Content-Type: image/jpeg`** (or PNG) and public **HTTPS**.
+- **`https://aerovista-us.github.io/cda.rental/robots.txt`** and **`…/sitemap.xml`**.
 
 ## Hosting
 
