@@ -188,7 +188,7 @@ h1 span {
   box-shadow: var(--shadow);
   background:
     linear-gradient(135deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.78)),
-    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=85') center/cover;
+    url('images/cdasunset.png') center/cover;
 }
 
 .hero-card::before {
@@ -268,7 +268,13 @@ section { padding: 58px 0; }
 .card p { margin: 0; color: var(--muted); line-height: 1.62; }
 .icon { font-size: 29px; margin-bottom: 14px; }
 
-.location-card { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; align-items: stretch; }
+.location-card { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; align-items: start; }
+
+.location-visual-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .map-mock {
   min-height: 380px;
@@ -277,15 +283,33 @@ section { padding: 58px 0; }
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow);
-  background:
-    linear-gradient(135deg, rgba(5, 7, 11, 0.12), rgba(5, 7, 11, 0.74)),
-    url('/mnt/data/file_00000000bc50720ca36ce115c3040736') center/cover;
+  background: #0a1119;
+}
+
+.map-mock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(5, 7, 11, 0.12), rgba(5, 7, 11, 0.74));
+}
+
+.location-map-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 .map-pin {
   position: absolute;
   right: 24%;
   bottom: 35%;
+  z-index: 2;
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -298,11 +322,27 @@ section { padding: 58px 0; }
   left: 20px;
   bottom: 20px;
   right: 20px;
+  z-index: 3;
   padding: 16px;
   border-radius: 20px;
   background: rgba(5, 7, 11, 0.75);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.location-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.location-gallery img {
+  width: 100%;
+  height: 112px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .map-label strong { display: block; font-size: 20px; margin-bottom: 4px; }
@@ -477,6 +517,8 @@ footer b { color: var(--text); }
   .hero { padding-top: 46px; }
   .btn { width: 100%; }
   .day { min-height: 62px; padding: 8px; }
+  .location-gallery { grid-template-columns: 1fr; }
+  .location-gallery img { height: 160px; }
   .day small { display: none; }
   .cal-head { display: block; }
   .legend { margin-top: 10px; }
@@ -535,9 +577,25 @@ footer b { color: var(--text); }
 
 <section id="location">
   <div class="wrap location-card">
-    <div class="map-mock" role="img" aria-label="Map showing Coeur d'Alene location area">
-      <div class="map-pin"></div>
-      <div class="map-label"><strong>Strategic CDA Location</strong><span>North-side logistics near groceries, freeway movement, and downtown/lake access.</span></div>
+    <div class="location-visual-col">
+      <div class="map-mock" aria-label="Strategic CDA location map and summary">
+        <img
+          class="location-map-img"
+          src="images/map.jpg"
+          alt="Map of Coeur d'Alene showing north-side access to groceries, I-90, and downtown or lake routes"
+          width="960"
+          height="540"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="map-pin" aria-hidden="true"></div>
+        <div class="map-label"><strong>Strategic CDA Location</strong><span>North-side logistics near groceries, freeway movement, and downtown/lake access.</span></div>
+      </div>
+      <div class="location-gallery" aria-label="Area reference photos">
+        <img src="images/cda-area-01.jpg" alt="Coeur d'Alene area context near the stay" loading="lazy" decoding="async" />
+        <img src="images/cda-area-02.jpg" alt="Neighborhood and approach roads near north Coeur d'Alene" loading="lazy" decoding="async" />
+        <img src="images/cda-area-03.jpg" alt="Additional local reference for race-week logistics" loading="lazy" decoding="async" />
+      </div>
     </div>
     <div class="card">
       <div class="eyebrow">Location Advantage</div>
@@ -719,11 +777,12 @@ footer b { color: var(--text); }
     </div>
 
     <div class="card">
-      <form onsubmit="event.preventDefault(); document.getElementById('demoResult').textContent='Request captured. We’ll review the selected dates, guest count, and stay details before sending payment and agreement instructions.';">
+      <form id="booking-form" name="booking" autocomplete="on">
         <div class="field-2">
-          <div><label for="name">Name</label><input id="name" name="name" placeholder="Full name" required></div>
-          <div><label for="phone">Phone</label><input id="phone" name="phone" placeholder="Best contact number"></div>
+          <div><label for="name">Name</label><input id="name" name="name" placeholder="Full name" required autocomplete="name"></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="Best contact number" autocomplete="tel"></div>
         </div>
+        <div><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Email for replies (recommended)"></div>
         <div class="field-2">
           <div><label for="checkin">Check-in</label><input id="checkin" name="checkin" type="date" min="2026-06-12" max="2026-06-22" value="2026-06-19"></div>
           <div><label for="checkout">Check-out</label><input id="checkout" name="checkout" type="date" min="2026-06-13" max="2026-06-23" value="2026-06-22"></div>
@@ -783,6 +842,84 @@ footer b { color: var(--text); }
       const el = document.getElementById(id);
       if (el) el.textContent = text;
     };
+
+    /**
+     * Booking delivery — configure exactly one path for real submissions:
+     * - formAction: full HTTPS URL (Formspree, FormSubmit, Getform, etc.)
+     * - mailto: inbox address for mailto fallback when formAction is empty
+     * Leave formAction and mailto empty for demo-only message (nothing sent).
+     */
+    const BOOKING = {
+      formAction: 'https://formspree.io/f/xeenpaby',
+      mailto: '',
+      thankYouUrl: ''
+    };
+
+    function setupBookingForm() {
+      const form = document.getElementById('booking-form');
+      if (!form) return;
+      const result = document.getElementById('demoResult');
+      const fa = (BOOKING.formAction || '').trim();
+      const mt = (BOOKING.mailto || '').trim();
+
+      if (fa) {
+        let ok = false;
+        try {
+          const u = new URL(fa);
+          ok = u.protocol === 'https:' || u.protocol === 'http:';
+        } catch {
+          ok = false;
+        }
+        if (!ok) {
+          console.warn('BOOKING.formAction must be a full http(s) URL.');
+          form.addEventListener('submit', ev => {
+            ev.preventDefault();
+            if (result) result.textContent = 'Booking form URL is invalid. Set BOOKING.formAction to a full https://… address in index.html.';
+          });
+          return;
+        }
+        form.action = fa;
+        form.method = 'POST';
+        const addHidden = (name, value) => {
+          if (form.querySelector(`input[name="${name}"]`)) return;
+          const i = document.createElement('input');
+          i.type = 'hidden';
+          i.name = name;
+          i.value = value;
+          form.appendChild(i);
+        };
+        const redirectAfterSubmit = () => {
+          const ty = (BOOKING.thankYouUrl || '').trim();
+          if (ty) addHidden('_next', ty);
+          else if (window.location.protocol !== 'file:') addHidden('_next', `${window.location.origin}${window.location.pathname}#request`);
+        };
+        if (fa.includes('formsubmit.co')) {
+          addHidden('_subject', 'Heart of Awl — booking request');
+          addHidden('_template', 'table');
+          redirectAfterSubmit();
+        } else if (fa.includes('formspree.io')) {
+          addHidden('_subject', 'Heart of Awl — booking request');
+          redirectAfterSubmit();
+        }
+        return;
+      }
+
+      form.addEventListener('submit', ev => {
+        ev.preventDefault();
+        if (mt) {
+          const fd = new FormData(form);
+          const lines = [];
+          fd.forEach((val, key) => lines.push(`${key}: ${val}`));
+          const subject = 'Heart of Awl — booking request';
+          window.location.href = `mailto:${mt}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+          if (result) result.textContent = 'Opening your email app with your request details…';
+          return;
+        }
+        if (result) {
+          result.textContent = 'Demo mode: set BOOKING.formAction (HTTPS endpoint) or BOOKING.mailto (your inbox) in index.html to send real requests.';
+        }
+      });
+    }
 
     function paintCalendarSelection() {
       const checkin = document.getElementById('quoteCheckin')?.value;
@@ -882,6 +1019,7 @@ footer b { color: var(--text); }
       });
     });
 
+    setupBookingForm();
     calculateQuote();
   </script></body>
 </html>
