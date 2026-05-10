@@ -1,20 +1,25 @@
 # Booking form wiring
 
-The **Submit Booking Request** form in `index.html` is controlled by the `BOOKING` object near the bottom of the page (same `<script>` block as the pricing logic).
+The **booking request** UI lives on **`request.html`**. The `BOOKING` object and Formspree wiring are in the `<script>` block at the bottom of that file.
 
-## Navigation and CTAs (anchors)
+Selections from the homepage calendar are passed via:
 
-These links scroll to sections on the same page and are valid as long as the matching `id` exists:
+- Query string: `request.html?nights=2026-06-12,2026-06-13,...`
+- **`sessionStorage`** key `heartofawl.selectedNights` (JSON array), used when the query string is absent.
 
-| Link text | Target |
-|-----------|--------|
-| Brand / home | `#top` (`<main id="top">`) |
+Links with class **`href-request`** on `index.html` save the current calendar selection and navigate to `request.html` with the `nights` parameter.
+
+## Navigation on `index.html`
+
+| Link / section | Target |
+|----------------|--------|
+| Brand / home | `#top` (`<main id="main-content">`, hero has `#top`) |
 | Location | `#location` |
 | Dates | `#calendar` |
 | Estimate | `#payment` |
-| Request booking (header, hero, calendar sidebar, footer) | `#request` |
+| Continue to booking | `#request` (CTA strip) or **`request.html`** (header / buttons with `href-request`) |
 
-No broken hash targets.
+Peak nights **Jun 18–21** must be selected or cleared **together** on the calendar; the request page re-validates that rule before submit.
 
 ## Real submissions
 
@@ -32,7 +37,7 @@ const BOOKING = {
 };
 ```
 
-On load, the script sets `method="POST"` and, for `formspree.io`, adds `_subject` and `_next` (returns visitors to this page at `#request` when the site is served over `http`/`https`; optional override via `thankYouUrl`).
+On load, the script sets `method="POST"` and, for `formspree.io`, adds `_subject` and `_next` (defaults to **`request.html?thanks=1`** after submit when not using `file://`; override via `thankYouUrl`).
 
 **FormSubmit** is also supported: for `formsubmit.co` URLs the script adds `_subject`, `_template`, and `_next`.
 

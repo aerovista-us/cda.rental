@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking request | Heart of Awl Basecamp</title>
+  <meta name="description" content="Confirm your Coeur d'Alene Ironman weekend dates and submit your stay request for Heart of Awl Basecamp." />
+  <meta name="site-public-url" content="REPLACE_SITE_PUBLIC_URL" />
+  <link rel="canonical" href="REPLACE_SITE_PUBLIC_URL/request.html" />
+  <meta name="theme-color" content="#05070b" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #05070b;
+      --bg-2: #08111c;
+      --panel: rgba(255, 255, 255, 0.065);
+      --text: #f7f9ff;
+      --muted: #aab7cd;
+      --soft: #dfe8f8;
+      --line: rgba(255, 255, 255, 0.13);
+      --cyan: #2fe7ff;
+      --cyan-2: #9af7ff;
+      --pink: #ff4d7d;
+      --green: #5df2a1;
+      --orange: #ffba55;
+      --gold: #ffd36a;
+      --shadow: 0 26px 90px rgba(0, 0, 0, 0.52);
+      --radius: 28px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% -2%, rgba(47, 231, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 86% 4%, rgba(255, 77, 125, 0.14), transparent 31%),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 46%, var(--bg));
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1140px, calc(100% - 32px)); margin: 0 auto; }
+
+    .skip-link {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .skip-link:focus {
+      position: fixed; left: 16px; top: 16px; width: auto; height: auto; margin: 0; padding: 12px 18px;
+      clip: auto; overflow: visible; white-space: normal; z-index: 10000; border-radius: 14px; font-weight: 900;
+      color: #031018; background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
+    }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 7, 11, 0.76);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .back-link { color: var(--cyan); font-weight: 800; font-size: 14px; }
+    .back-link:hover { text-decoration: underline; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 950; letter-spacing: 0.045em; text-transform: uppercase; font-size: 14px; }
+
+    .request-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 22px;
+      align-items: start;
+      padding: 36px 0 64px;
+    }
+    @media (max-width: 920px) {
+      .request-layout { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.035));
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.23);
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border-radius: 999px;
+      border: 1px solid rgba(47, 231, 255, 0.28); background: rgba(47, 231, 255, 0.08);
+      color: #c8f9ff; font-size: 12px; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    h1 { margin: 16px 0 12px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.045em; line-height: 1.05; }
+    .lead { color: var(--muted); line-height: 1.62; margin: 0 0 18px; font-size: 17px; }
+
+    .alert {
+      padding: 14px 16px; border-radius: 18px; margin-bottom: 16px; font-size: 14px; line-height: 1.5;
+      border: 1px solid rgba(255, 186, 85, 0.45); background: rgba(255, 186, 85, 0.09); color: #ffe8c9;
+    }
+    .alert.bad { border-color: rgba(255, 97, 112, 0.5); background: rgba(255, 97, 112, 0.1); color: #ffd6da; }
+    .alert.ok { border-color: rgba(93, 242, 161, 0.45); background: rgba(93, 242, 161, 0.08); color: #d4ffe8; }
+
+    .recap-list { margin: 12px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--muted); line-height: 1.55; }
+    .recap-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .recap-list li:last-child { border-bottom: 0; }
+    .recap-totals { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.12); }
+
+    .sales-points { margin-top: 18px; }
+    .sales-points h3 { margin: 0 0 10px; font-size: 15px; color: var(--text); }
+    .sales-points ul { margin: 0; padding-left: 1.15em; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .sales-points li { margin-bottom: 8px; }
+
+    .status-board { display: grid; gap: 10px; margin-top: 18px; }
+    .status-item {
+      display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 16px;
+      background: rgba(0, 0, 0, 0.22); border: 1px solid rgba(255, 255, 255, 0.09); font-size: 13px;
+    }
+    .pill {
+      display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 950; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .pill.pending { background: rgba(255, 186, 85, 0.18); color: #ffd89e; }
+    .pill.warn { background: rgba(255, 97, 112, 0.18); color: #ffb8be; }
+    .pill.good { background: rgba(93, 242, 161, 0.14); color: #b8ffd9; }
+
+    form { display: grid; gap: 12px; }
+    label { color: var(--soft); font-size: 13px; font-weight: 950; letter-spacing: 0.04em; text-transform: uppercase; }
+    input, select, textarea {
+      width: 100%; padding: 14px; border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(0, 0, 0, 0.28); color: var(--text); font: inherit; outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(47, 231, 255, 0.72); box-shadow: 0 0 0 4px rgba(47, 231, 255, 0.08);
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .field-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 560px) { .field-2 { grid-template-columns: 1fr; } }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px;
+      border-radius: 999px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.065); color: var(--text); cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(47, 231, 255, 0.58); background: rgba(47, 231, 255, 0.10); }
+    .btn.primary { color: #031018; border: 0; background: linear-gradient(135deg, var(--cyan), var(--cyan-2)); box-shadow: 0 16px 44px rgba(47, 231, 255, 0.24); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; line-height: 1.6; border-top: 1px solid var(--line); margin-top: 24px; }
+    footer b { color: var(--text); }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--cyan); outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to form</a>
+
+  <header>
+    <div class="wrap nav">
+      <a class="back-link" href="index.html#calendar">← Back to calendar &amp; estimate</a>
+      <a class="brand" href="index.html">
+        <span>Heart of Awl</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <div class="wrap request-layout">
+      <div>
+        <div class="eyebrow">Confirm selection</div>
+        <h1>Complete your booking request.</h1>
+        <p class="lead">Review the nights and estimate below — then send your details. <strong style="color:var(--text);">No charge until approval:</strong> we confirm fit first, then send payment and agreement steps.</p>
+
+        <div id="banner-empty" class="alert" role="status" hidden>No nights selected. <a href="index.html#calendar" style="color:var(--cyan);font-weight:800;">Choose dates on the calendar</a> and return here.</div>
+        <div id="banner-invalid" class="alert bad" role="alert" hidden>Your date list is inconsistent with our peak-weekend rule. Please return to the calendar.</div>
+        <div id="banner-thanks" class="alert ok" role="status" hidden>Thank you — your request was submitted. We’ll follow up by email.</div>
+
+        <div class="card" id="recap-card">
+          <div class="eyebrow">Your nights</div>
+          <ul class="recap-list" id="recap-lines"></ul>
+          <div class="recap-totals">
+            <div class="recap-list" style="margin:0;">
+              <li><span>Nightly subtotal</span><strong id="recap-nightly">—</strong></li>
+              <li><span>Cleaning / turnover</span><strong id="recap-cleaning">—</strong></li>
+              <li><span>Event logistics</span><strong id="recap-logistics">—</strong></li>
+              <li><span><b style="color:var(--text);">Estimated pre-deposit stay total</b></span><strong id="recap-predeposit">—</strong></li>
+              <li><span>Typical reserve deposit (35%)</span><strong id="recap-reserve">—</strong></li>
+            </div>
+          </div>
+          <p style="margin:14px 0 0;font-size:12px;color:var(--muted);line-height:1.5;">Peak race nights <strong style="color:#ffe8af;">Jun 18–21</strong> always move as one four-night block on the calendar — reflected above.</p>
+        </div>
+
+        <div class="sales-points card">
+          <h3>Why crews choose this basecamp</h3>
+          <ul>
+            <li><strong style="color:var(--text);">Whole-home privacy</strong> — staging gear, quiet recovery, and space for athletes + support without hotel friction.</li>
+            <li><strong style="color:var(--text);">Race-week logistics</strong> — Groceries, freeway access, and north-side movement while staying calmer than downtown core noise.</li>
+            <li><strong style="color:var(--text);">Clear process</strong> — Request → review → secure deposit link after approval — no surprise charges on this page.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">What happens next</div>
+          <div class="status-board" aria-label="Typical steps after you submit">
+            <div class="status-item"><span>1. Your request</span><span class="pill pending">Sent today</span></div>
+            <div class="status-item"><span>2. Stay review</span><span class="pill warn">We reply by email</span></div>
+            <div class="status-item"><span>3. Approval</span><span class="pill pending">Deposit link</span></div>
+            <div class="status-item"><span>4. Agreement</span><span class="pill pending">Sign &amp; pay reserve</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">Secure form</div>
+        <h2 style="margin:12px 0 8px;font-size:clamp(22px,3vw,30px);letter-spacing:-0.03em;">Send your details</h2>
+        <p style="margin:0 0 18px;color:var(--muted);font-size:15px;line-height:1.55;">We use your selections exactly as shown in the recap. You can add context in notes.</p>
+
+        <form id="booking-form" name="booking" autocomplete="on">
+          <div class="field-2">
+            <div><label for="name">Name</label><input id="name" name="name" placeholder="Full name" required autocomplete="name" /></div>
+            <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="Best contact number" autocomplete="tel" /></div>
+          </div>
+          <div><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="your@email.com" required /></div>
+          <div class="field-2">
+            <div><label for="checkin">First night</label><input id="checkin" name="checkin" type="date" min="2026-06-12" max="2026-06-23" readonly /></div>
+            <div><label for="checkout">Morning after last night</label><input id="checkout" name="checkout" type="date" min="2026-06-13" max="2026-06-24" readonly /></div>
+          </div>
+          <input type="hidden" name="selected_nights" id="booking-selected-nights" value="" />
+          <input type="hidden" name="estimate_predeposit" id="field-estimate-predeposit" value="" />
+          <input type="hidden" name="estimate_reserve" id="field-estimate-reserve" value="" />
+          <div class="field-2">
+            <div><label for="guests">Guest Count</label><select id="guests" name="guests"><option>1–4</option><option>5–8</option><option>9–10 with approval</option><option>11–12 with approval</option></select></div>
+            <div><label for="vehicles">Vehicles</label><select id="vehicles" name="vehicles"><option>1</option><option>2</option><option>3</option><option>4+ needs approval</option></select></div>
+          </div>
+          <div><label for="purpose">Stay Purpose</label><select id="purpose" name="purpose"><option>Ironman athlete / support crew</option><option>Family support stay</option><option>Race weekend visitor</option><option>Other — explain below</option></select></div>
+          <div><label for="notes">Notes / Requests</label><textarea id="notes" name="notes" placeholder="Anything else we should know — bikes, crew roles, arrival timing, etc."></textarea></div>
+          <p style="color:var(--muted);font-size:13px;line-height:1.55;margin:0;">By submitting, you agree we may contact you via Formspree and email. <a href="privacy.html" style="color:var(--cyan);">Privacy</a> · <a href="terms.html" style="color:var(--cyan);">Terms</a></p>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" value="" />
+          <button class="btn primary" type="submit" id="submit-request">Submit booking request</button>
+          <p id="demoResult" style="color:var(--green);font-weight:950;margin:4px 0 0"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><b>Note:</b> IRONMAN® references are geographic only. Not official race lodging; not affiliated with IRONMAN®.</p>
+      <p style="margin-top:12px;"><a href="index.html" style="color:var(--cyan);">Home</a> · <a href="privacy.html" style="color:var(--muted);">Privacy</a> · <a href="terms.html" style="color:var(--muted);">Terms</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const nightlyRates = {
+      '2026-06-12': 550, '2026-06-13': 575, '2026-06-14': 575, '2026-06-15': 625, '2026-06-16': 675,
+      '2026-06-17': 750, '2026-06-18': 850, '2026-06-19': 950, '2026-06-20': 850, '2026-06-21': 450,
+      '2026-06-22': 375, '2026-06-23': 250
+    };
+    const cleaningFee = 225;
+    const baseLogisticsFee = 175;
+    const securityDeposit = 350;
+    const PEAK_BLOCK = ['2026-06-18', '2026-06-19', '2026-06-20', '2026-06-21'];
+
+    const BOOKING = {
+      formAction: 'https://formspree.io/f/xeenpaby',
+      mailto: '',
+      thankYouUrl: ''
+    };
+
+    const money = value => value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+    function addDays(dateString, days) {
+      const date = new Date(dateString + 'T00:00:00');
+      date.setDate(date.getDate() + days);
+      return date.toISOString().slice(0, 10);
+    }
+
+    function parseNights() {
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get('nights');
+      if (raw) return raw.split(',').map(s => s.trim()).filter(Boolean);
+      try {
+        const j = sessionStorage.getItem('heartofawl.selectedNights');
+        if (j) return JSON.parse(j);
+      } catch (e) {}
+      return [];
+    }
+
+    function validatePeakBlock(arr) {
+      const set = new Set(arr);
+      const any = PEAK_BLOCK.some(d => set.has(d));
+      const all = PEAK_BLOCK.every(d => set.has(d));
+      return !any || all;
+    }
+
+    function computeTotals(sortedDates) {
+      let nightlySubtotal = 0;
+      sortedDates.forEach(d => { nightlySubtotal += nightlyRates[d] || 0; });
+      const nights = sortedDates.length;
+      const cleaningApplied = nights > 0 ? cleaningFee : 0;
+      const logisticsFee = nights >= 2 ? baseLogisticsFee : nights === 1 ? 100 : 0;
+      const preDepositTotal = nightlySubtotal + cleaningApplied + logisticsFee;
+      const reserve = nights === 0 ? 0 : Math.max(500, Math.round(preDepositTotal * 0.35 / 50) * 50);
+      return { nightlySubtotal, nights, cleaningApplied, logisticsFee, preDepositTotal, reserve };
+    }
+
+    function formatNightLabel(iso) {
+      const d = new Date(iso + 'T12:00:00');
+      return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    }
+
+    let nightsSorted = [];
+
+    function renderRecap() {
+      const lines = document.getElementById('recap-lines');
+      const empty = document.getElementById('banner-empty');
+      const invalid = document.getElementById('banner-invalid');
+      const submitBtn = document.getElementById('submit-request');
+      const recapCard = document.getElementById('recap-card');
+
+      nightsSorted = [...new Set(parseNights())].filter(d => d >= '2026-06-12' && d <= '2026-06-23').sort();
+
+      empty.hidden = true;
+      invalid.hidden = true;
+
+      if (!nightsSorted.length) {
+        empty.hidden = false;
+        lines.innerHTML = '';
+        document.getElementById('recap-nightly').textContent = '—';
+        document.getElementById('recap-cleaning').textContent = '—';
+        document.getElementById('recap-logistics').textContent = '—';
+        document.getElementById('recap-predeposit').textContent = '—';
+        document.getElementById('recap-reserve').textContent = '—';
+        document.getElementById('checkin').value = '';
+        document.getElementById('checkout').value = '';
+        document.getElementById('booking-selected-nights').value = '';
+        document.getElementById('field-estimate-predeposit').value = '';
+        document.getElementById('field-estimate-reserve').value = '';
+        submitBtn.disabled = true;
+        return;
+      }
+
+      if (!validatePeakBlock(nightsSorted)) {
+        invalid.hidden = false;
+        recapCard.style.opacity = '0.5';
+        submitBtn.disabled = true;
+        lines.innerHTML = '';
+        document.getElementById('recap-nightly').textContent = '—';
+        document.getElementById('recap-cleaning').textContent = '—';
+        document.getElementById('recap-logistics').textContent = '—';
+        document.getElementById('recap-predeposit').textContent = '—';
+        document.getElementById('recap-reserve').textContent = '—';
+        return;
+      }
+
+      recapCard.style.opacity = '1';
+      submitBtn.disabled = false;
+
+      const t = computeTotals(nightsSorted);
+      lines.innerHTML = nightsSorted.map(d => {
+        const rate = nightlyRates[d] || 0;
+        return `<li><span>${formatNightLabel(d)}</span><strong>${money(rate)}</strong></li>`;
+      }).join('');
+
+      document.getElementById('recap-nightly').textContent = money(t.nightlySubtotal);
+      document.getElementById('recap-cleaning').textContent = money(t.cleaningApplied);
+      document.getElementById('recap-logistics').textContent = money(t.logisticsFee);
+      document.getElementById('recap-predeposit').textContent = money(t.preDepositTotal);
+      document.getElementById('recap-reserve').textContent = money(t.reserve);
+
+      document.getElementById('checkin').value = nightsSorted[0];
+      document.getElementById('checkout').value = addDays(nightsSorted[nightsSorted.length - 1], 1);
+      document.getElementById('booking-selected-nights').value = nightsSorted.join(', ');
+      document.getElementById('field-estimate-predeposit').value = money(t.preDepositTotal);
+      document.getElementById('field-estimate-reserve').value = money(t.reserve);
+    }
+
+    function setupBookingForm() {
+      const form = document.getElementById('booking-form');
+      if (!form) return;
+      const result = document.getElementById('demoResult');
+      const fa = (BOOKING.formAction || '').trim();
+      const mt = (BOOKING.mailto || '').trim();
+
+      form.addEventListener('submit', ev => {
+        if (!validatePeakBlock(nightsSorted) || !nightsSorted.length) {
+          ev.preventDefault();
+          result.textContent = 'Please fix your nights on the calendar and reload this page.';
+          return;
+        }
+      });
+
+      if (!fa) return;
+
+      try {
+        const u = new URL(fa);
+        if (u.protocol !== 'https:' && u.protocol !== 'http:') throw new Error();
+      } catch {
+        form.addEventListener('submit', ev => {
+          ev.preventDefault();
+          result.textContent = 'Invalid form endpoint configuration.';
+        });
+        return;
+      }
+
+      form.action = fa;
+      form.method = 'POST';
+
+      const addHidden = (name, value) => {
+        if (form.querySelector(`input[name="${name}"]`)) return;
+        const i = document.createElement('input');
+        i.type = 'hidden';
+        i.name = name;
+        i.value = value;
+        form.appendChild(i);
+      };
+
+      const redirectAfterSubmit = () => {
+        const ty = (BOOKING.thankYouUrl || '').trim();
+        if (ty) addHidden('_next', ty);
+        else if (window.location.protocol !== 'file:') {
+          addHidden('_next', new URL('request.html?thanks=1', window.location.href).href);
+        }
+      };
+
+      if (fa.includes('formsubmit.co')) {
+        addHidden('_subject', 'Heart of Awl — booking request');
+        addHidden('_template', 'table');
+        redirectAfterSubmit();
+      } else if (fa.includes('formspree.io')) {
+        addHidden('_subject', 'Heart of Awl — booking request');
+        redirectAfterSubmit();
+      }
+    }
+
+    if (new URLSearchParams(window.location.search).has('thanks')) {
+      document.getElementById('banner-thanks').hidden = false;
+    }
+
+    renderRecap();
+    setupBookingForm();
+  </script>
+</body>
+</html>
